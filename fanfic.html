@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Llama de Aman y el Código de Arda — Biblia y Manuscrito (Caps. 1–27)</title>
+<style>
+  :root {
+    --bg-main: #0e1117;
+    --bg-card: #161b24;
+    --bg-sys: #0b131e;
+    --border-gold: #c8a252;
+    --border-sys: #3b82f6;
+    --text-main: #e2e8f0;
+    --text-muted: #94a3b8;
+    --accent-gold: #e5c07b;
+    --accent-cyan: #67e8f9;
+    --accent-ember: #f97316;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    line-height: 1.8;
+    display: flex;
+  }
+  /* Navegación Lateral */
+  nav {
+    width: 300px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #090c10;
+    border-right: 1px solid #262e3d;
+    padding: 1.5rem 1.2rem;
+    overflow-y: auto;
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+  nav h2 {
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent-gold);
+    margin-top: 1.4rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid #262e3d;
+    padding-bottom: 0.3rem;
+  }
+  nav a {
+    display: block;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    padding: 0.3rem 0.4rem;
+    border-radius: 4px;
+    transition: all 0.2s;
+  }
+  nav a:hover {
+    color: #fff;
+    background: rgba(200, 162, 82, 0.15);
+  }
+  .brand-title {
+    font-family: 'Georgia', serif;
+    font-size: 1.15rem;
+    color: var(--accent-gold);
+    font-weight: bold;
+    line-height: 1.3;
+    margin-bottom: 0.3rem;
+  }
+  .brand-sub {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+  /* Contenido Principal */
+  main {
+    margin-left: 300px;
+    padding: 3rem 4rem;
+    max-width: 1050px;
+    width: 100%;
+  }
+  header.hero {
+    border-bottom: 2px solid var(--border-gold);
+    padding-bottom: 2rem;
+    margin-bottom: 3rem;
+  }
+  header.hero h1 {
+    font-size: 2.5rem;
+    color: var(--accent-gold);
+    margin: 0 0 0.5rem 0;
+    letter-spacing: 0.03em;
+  }
+  header.hero p {
+    color: var(--text-muted);
+    font-family: system-ui, sans-serif;
+    margin: 0.2rem 0;
+  }
+  section.bible-block {
+    background: var(--bg-card);
+    border: 1px solid #283142;
+    border-left: 4px solid var(--border-gold);
+    border-radius: 8px;
+    padding: 1.8rem 2rem;
+    margin-bottom: 2.5rem;
+  }
+  section.bible-block h2 {
+    color: var(--accent-gold);
+    margin-top: 0;
+    font-size: 1.5rem;
+  }
+  section.bible-block h3 {
+    color: var(--accent-cyan);
+    font-family: system-ui, sans-serif;
+    font-size: 1.05rem;
+    margin-top: 1.5rem;
+  }
+  .prompt-box {
+    background: #0b0f17;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    padding: 1.2rem;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 0.88rem;
+    color: #cbd5e1;
+    white-space: pre-wrap;
+    margin-bottom: 1.2rem;
+  }
+  .tag {
+    display: inline-block;
+    background: rgba(200, 162, 82, 0.15);
+    color: var(--accent-gold);
+    border: 1px solid rgba(200, 162, 82, 0.4);
+    font-family: system-ui, sans-serif;
+    font-size: 0.75rem;
+    padding: 0.15rem 0.55rem;
+    border-radius: 999px;
+    margin-right: 0.4rem;
+  }
+  /* Capítulos */
+  article.chapter {
+    margin-bottom: 4.5rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid #262e3d;
+  }
+  .chapter-header {
+    margin-bottom: 2rem;
+    border-left: 3px solid var(--accent-gold);
+    padding-left: 1.2rem;
+  }
+  .chapter-header h2 {
+    font-size: 1.85rem;
+    color: var(--accent-gold);
+    margin: 0 0 0.3rem 0;
+  }
+  .chapter-meta {
+    font-family: system-ui, sans-serif;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+  }
+  article.chapter p {
+    margin-bottom: 1.25rem;
+    text-align: justify;
+    font-size: 1.08rem;
+  }
+  /* Ventanas del Sistema Eä-Core OS */
+  .sys-window {
+    background: var(--bg-sys);
+    border: 1px solid rgba(59, 130, 246, 0.45);
+    border-left: 4px solid var(--border-sys);
+    border-radius: 6px;
+    padding: 1rem 1.3rem;
+    margin: 1.6rem 0;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 0.9rem;
+    color: #bae6fd;
+    white-space: pre-wrap;
+    line-height: 1.55;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  }
+  .sys-window.alert {
+    border-color: rgba(249, 115, 22, 0.6);
+    border-left-color: var(--accent-ember);
+    color: #fed7aa;
+    background: #1a100c;
+  }
+  .sys-window.status-box {
+    border-color: rgba(200, 162, 82, 0.6);
+    border-left-color: var(--accent-gold);
+    color: #fef08a;
+  }
+  .dialogue-thought {
+    font-style: italic;
+    color: #cbd5e1;
+  }
+  table.canon-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-family: system-ui, sans-serif;
+    font-size: 0.9rem;
+  }
+  table.canon-table th, table.canon-table td {
+    border: 1px solid #2d3748;
+    padding: 0.65rem 0.8rem;
+    text-align: left;
+  }
+  table.canon-table th {
+    background: #1e2634;
+    color: var(--accent-gold);
+  }
+  @media (max-width: 900px) {
+    nav { position: static; width: 100%; height: auto; border-right: none; border-bottom: 1px solid #262e3d; }
+    main { margin-left: 0; padding: 1.5rem; }
+    body { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand-title">La Llama de Aman y el Código de Arda</div>
+  <div class="brand-sub">Edición Revisada · Biblia + Caps. 1–27</div>
+
+  <h2>Biblia y Prompts</h2>
+  <a href="#reglas-estilo">1. Reglas de Estilo y Continuidad</a>
+  <a href="#prompts-maestros">2. Prompts de Generación</a>
+  <a href="#worldbuilding">3. Cronología y Sistema</a>
+  <a href="#personajes">4. Fichas de Personajes</a>
+  <a href="#escaleta">5. Escaleta de 70 Capítulos</a>
+
+  <h2>Arco I: Despertar (321–341 T.E.)</h2>
+  <a href="#cap-1">Cap. 1: Ruptura del Sello de Piedra</a>
+  <a href="#cap-2">Cap. 2: Ecos de un Mundo Cambiado</a>
+  <a href="#cap-3">Cap. 3: El Valle de Imladris</a>
+  <a href="#cap-4">Cap. 4: Compilando la Luz Estelar</a>
+  <a href="#cap-5">Cap. 5: Fantasmas del Pasado</a>
+  <a href="#cap-6">Cap. 6: La Forja de Lómenar</a>
+  <a href="#cap-7">Cap. 7: Lecciones de Esgrima y Estrellas</a>
+  <a href="#cap-8">Cap. 8: El Código de la Música</a>
+  <a href="#cap-9">Cap. 9: Incursión en las Ruinas de Eregion</a>
+  <a href="#cap-10">Cap. 10: El Virus de Morgoth</a>
+  <a href="#cap-11">Cap. 11: La Sombra del Fuego Interno</a>
+  <a href="#cap-12">Cap. 12: La Víspera del Siglo</a>
+  <a href="#cap-13">Cap. 13: El Centenario de la Estrella</a>
+  <a href="#cap-14">Cap. 14: Juramento en Silencio</a>
+
+  <h2>Arco II: Flor Dorada y Angmar</h2>
+  <a href="#cap-15">Cap. 15: Luz desde el Oeste</a>
+  <a href="#cap-16">Cap. 16: Acero de Gondolin</a>
+  <a href="#cap-17">Cap. 17: Los Cinco Enviados</a>
+  <a href="#cap-18">Cap. 18: El Alzamiento del Rey Brujo</a>
+  <a href="#cap-19">Cap. 19: Caza de Espectros</a>
+  <a href="#cap-20">Cap. 20: La Dama de Lothlórien</a>
+  <a href="#cap-21">Cap. 21: Ingeniería de Defensa</a>
+  <a href="#cap-22">Cap. 22: El Radar del Abismo</a>
+  <a href="#cap-23">Cap. 23: Arquitectura de Purificación</a>
+  <a href="#cap-24">Cap. 24: La Caída de Fornost</a>
+  <a href="#cap-25">Cap. 25: Lo Que Dijo Glorfindel</a>
+  <a href="#cap-26">Cap. 26: La Piedra de Carn Dûm</a>
+  <a href="#cap-27">Cap. 27: El Consejo de Arwen</a>
+</nav>
+
+<main>
+  <header class="hero">
+    <h1>La Llama de Aman y el Código de Arda</h1>
+    <p><strong>Género:</strong> Fantasía Épica · LitRPG · Transmigración · Romance Épico</p>
+    <p><strong>Extensión Objetivo:</strong> 70 Capítulos (~210,000 palabras) · <strong>Progreso Actual:</strong> Capítulos 1–27 completados y auditados</p>
+    <p><strong>Fusión Estilística:</strong> J.R.R. Tolkien · George R.R. Martin · Cassandra Clare · J.K. Rowling</p>
+  </header>
+
+  <!-- SECCIÓN 1: REGLAS DE ESTILO Y CONTINUIDAD -->
+  <section id="reglas-estilo" class="bible-block">
+    <h2>1. Reglas de Estilo, Canon y Continuidad (Auditadas)</h2>
+    <p>Todas las incoherencias detectadas entre la Biblia original y el manuscrito han sido armonizadas bajo las siguientes reglas inquebrantables:</p>
+    <ul>
+      <li><strong>Invisibilidad absoluta del Sistema (Eä-Core OS):</strong> Las ventanas, notificaciones y voz del Sistema <em>solo los ve y escucha Aurendil</em>. Para el resto de habitantes de Arda (Elrond, Glorfindel, los gemelos, Mithrandir), Aurendil posee un don raro para escuchar la <em>Música de los Ainur (la Canción)</em> de cerca, lo que explica que mire donde nadie mira o perciba disonancias ocultas. Arwen es la única que conoce la verdad completa sobre el Sistema y el año 2025 desde el Capítulo 27.</li>
+      <li><strong>Cero bloques de código literal en la narrativa:</strong> No se escribe código de programación (ni sintaxis tipo <code>if/else</code> o funciones) dentro de los capítulos. Toda compilación rúnica de Cirth (estructura/materia) y Tengwar (flujo/energía) se describe en prosa fluida, como un comentario conceptual de lo que hace el encantamiento sobre las leyes de la Música.</li>
+      <li><strong>Resolución cronológica (Opción B — Años de los Valar):</strong> Aurendil nació en Valinor bajo los Dos Árboles y vivió <strong>60 años de los Valar</strong> (~575 años solares) antes de ser sellado en las Ered Luin tras la Caída de Gondolin (510 P.E.). Permaneció dormido <strong>3,841 años solares</strong> hasta despertar en el <strong>321 T.E.</strong> En el <strong>341 T.E.</strong>, Arwen cumple 100 años y Aurendil celebra el <strong>vigésimo aniversario desde su despertar</strong>.</li>
+      <li><strong>Alineación estricta con el Canon de Tolkien:</strong> En el 321 T.E., Dol Guldur aún no existe (Amon Lanc sigue libre) y Galadriel y Celeborn residen entre Lindon y Lórinand. Círdan no tuvo esposa. Celebrían es madre de Elladan, Elrohir y Arwen, y Galadriel es su abuela. Arnor se divide en Arthedain, Rhudaur y Cardolan; Fornost cae en 1974 T.E. y la batalla final contra Angmar junto con la profecía de Glorfindel ocurren en 1975 T.E.</li>
+    </ul>
+  </section>
+
+  <!-- SECCIÓN 2: PROMPTS MAESTROS -->
+  <section id="prompts-maestros" class="bible-block">
+    <h2>2. Prompts de Generación Corregidos (Listos para Copiar)</h2>
+
+    <h3>Prompt 1: Prompt Maestro de Capítulo (Uso General)</h3>
+    <div class="prompt-box">Actúa como un autor maestro de fantasía épica y LitRPG. Escribirás el Capítulo [NÚMERO Y TÍTULO] de la novela "LA LLAMA DE AMAN Y EL CÓDIGO DE ARDA", con una extensión rica y detallada de entre 2,800 y 3,200 palabras.
+
+[FUSIÓN DE ESTILOS LITERARIOS]
+1. J.R.R. Tolkien: Prosa elevada, reverencia por el mito antiguo, peso de las eras, belleza melancólica de los Eldar y rigor lingüístico (Quenya, Sindarin, Cirth, Tengwar).
+2. George R.R. Martin: Realismo político crudo, consecuencias reales de la guerra, intriga cortesana, ambigüedad moral y tensión constante.
+3. Cassandra Clare: Dinámicas emocionales intensas, romance épico e inmortal (Aurendil y Arwen), drama familiar profundo (Glorfindel y Rúmilë), humor afilado en los diálogos y estética estilizada de runas luminosas.
+4. J.K. Rowling: Sentido de maravilla en el aprendizaje mágico, descubrimiento progresivo de secretos en lugares antiguos (Rivendel, Eregion, Ered Mithrin) y calidez en los lazos de camaradería.
+
+[REGLAS ESTRICTAS DE CONTINUIDAD Y ESTILO]
+- Protagonista: Aurendil, híbrido de Alto Elfo Noldo de Aman (testigo de los Dos Árboles, vivió 60 años de los Valar / ~575 solares antes de la Caída de Gondolin, durmió 3,841 años solares) y Maia de Fuego, reencarnación de un ingeniero de software de 25 años (año 2025) con memoria del Legendarium.
+- Visibilidad del Sistema: Las ventanas y mensajes de Eä-Core OS SOLO los ve y escucha Aurendil. Los demás personajes creen que oye la Canción (Música de los Ainur) de cerca, excepto Arwen (quien conoce la verdad desde el Cap. 27).
+- Prohibición de bloques de código: NO escribas sintaxis de programación ni pseudocódigo. Explica toda ingeniería rúnica de Cirth (materia/estructura) y Tengwar (flujo/energía) en prosa narrativa como un comentario de lo que hace el hechizo.
+- Respeta estrictamente la Biblia del Mundo y el resumen de este capítulo: [PEGAR AQUÍ EL RESUMEN DEL CAPÍTULO].</div>
+
+    <h3>Prompt 2: Escenas de Ingeniería Rúnica y Forja</h3>
+    <div class="prompt-box">Escribe una escena detallada de magia rúnica y herrería élfica protagonizada por Aurendil. Trata las escrituras Cirth (estructura física/materia) y Tengwar (flujo energético/voluntad) como principios lógicos compilados sobre las leyes de la Música de los Ainur, narrados siempre en prosa elegante sin bloques de código. Describe el uso del Depurador de Realidad (Debug Vision, visible solo para Aurendil), las condiciones lógicas de seguridad, la importancia de la cadencia vocal aprendida con Arwen y la canalización de la Llama de Anor frente a la Sombra de Udûn.</div>
+
+    <h3>Prompt 3: Escenas de Combate y Batallas</h3>
+    <div class="prompt-box">Narra un combate épico y táctico con el realismo crudo de George R.R. Martin, la majestuosidad heroica de J.R.R. Tolkien y la agilidad estilizada de Cassandra Clare. Muestra cómo Aurendil combina la esgrima Noldor de Gondolin (con su espada Lómenar en la Vaina de Ecthelion, el Paso del Relámpago y la escucha del compás del combate), el Látigo de Llama Blanca (fuego selectivo que solo arde lo corrupto) y escudos o trampas rúnicas compiladas en tiempo real, apoyado por lecturas discretas de su interfaz LitRPG visibles únicamente para él.</div>
+
+    <h3>Prompt 4: Escenas de Romance y Drama Familiar</h3>
+    <div class="prompt-box">Escribe una escena cargada de emoción entre Aurendil y Arwen Undómiel (o junto a Glorfindel y Rúmilë). Combina la devoción inmortal y poética de Beren y Lúthien (Tolkien) con la química intensa, el humor seco e inteligente y la vulnerabilidad emocional de Cassandra Clare. Destaca el enlace espiritual completo (Fëa-Link) que une a Aurendil y Arwen, el papel de Arwen como ancla emocional y musical, y la lucha interna de Aurendil por purificar a su madre sin sucumbir a la Sombra de Udûn.</div>
+
+    <h3>Prompt 5: Salto Multiversal (Westeros / Danza de los Dragones)</h3>
+    <div class="prompt-box">Narra la transición y llegada de Aurendil (Nivel 100) y Arwen desde Valinor hacia Planetos (Canción de Hielo y Fuego, año 129 d.C., inicio de la Danza de los Dragones) tras activar la Llave de Vacío. Contrasta la pureza luminosa de dos seres de Aman con el mundo gris, sangriento y político de George R.R. Martin. Muestra el escaneo del Sistema sobre los Targaryen (Rhaenyra, Daemon, Aemond) y cómo los dragones (Caraxes, Syrax, Vhagar) reaccionan con sumisión instintiva ante la esencia primordial de un Maia de Fuego.</div>
+  </section>
+
+  <!-- SECCIÓN 3: WORLDBUILDING Y CRONOLOGÍA -->
+  <section id="worldbuilding" class="bible-block">
+    <h2>3. Worldbuilding, Cronología y Sistema Eä-Core OS</h2>
+    <table class="canon-table">
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Hito Cronológico</th>
+          <th>Estado y Detalles Clave</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Años de los Árboles – 510 P.E.</td>
+          <td>Nacimiento en Aman y Caída de Gondolin</td>
+          <td>Hijo de Glorfindel y Rúmilë (Maia de la llama de Arien). Vive 60 años de los Valar (~575 solares). Tras caer Gondolin, Rúmilë se entrega a Morgoth para salvarlo y lo sella bajo las Ered Luin.</td>
+        </tr>
+        <tr>
+          <td>321 T.E.</td>
+          <td>Despertar y Llegada a Rivendel</td>
+          <td>Despierta tras 3,841 años solares (Nv. 42). Conoce a Mithrandir (llegado 679 años antes por orden de Manwë), Círdan, Elrond y Arwen (80 años). Forja Lómenar y explora Ost-in-Edhil.</td>
+        </tr>
+        <tr>
+          <td>341 T.E.</td>
+          <td>Centenario de Arwen y Juramento</td>
+          <td>Arwen cumple 100 años; Aurendil celebra 20 años despierto (Nv. 49). Completan el Fëa-Link al 100 % y Aurendil forja la Diadema de la Flor Dorada con la reliquia de Glorfindel.</td>
+        </tr>
+        <tr>
+          <td>1000 T.E.</td>
+          <td>Regreso de Glorfindel y los Istari</td>
+          <td>Reencuentro secreto con Glorfindel (Nv. 95), quien entrega la Vaina de Ecthelion y revela que el fëa de Rúmilë sigue resistiendo (14 % de núcleo solar). Llegan los cinco Istari; Círdan cede Narya a Mithrandir.</td>
+        </tr>
+        <tr>
+          <td>1300–1413 T.E.</td>
+          <td>Angmar, Túmulos y Lothlórien</td>
+          <td>Crea la Cadena de la Voz en Arnor, purga espectros en Tyrn Gorthad con el Látigo de Llama Blanca y refuerza las defensas de Lothlórien junto a Galadriel, Celeborn y Rúmil.</td>
+        </tr>
+        <tr>
+          <td>1642–1976 T.E.</td>
+          <td>Radar del Abismo, Fornost y Confesión</td>
+          <td>Triangula a Uru-Rúmilë bajo las Ered Mithrin (Nv. 64). Participa en Fornost (1974–1975 T.E.) y presencia la profecía de Glorfindel. En 1976 T.E., Arwen halla la clave musical del Antivirus y Aurendil le confiesa toda la verdad del Sistema y 2025 (Nv. 70).</td>
+        </tr>
+        <tr>
+          <td>2941–3039 T.E.</td>
+          <td>Smaug, Rescate de Rúmilë y Guerra del Anillo</td>
+          <td>Interviene en Esgaroth (2941), rescata y purifica a Rúmilë en Ered Mithrin (2961, Nv. 85→92), protege a la Comunidad del Anillo hasta Nv. 100 (3019) y zarpa a Aman antes del salto a Westeros (3039 T.E. / 129 d.C.).</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Habilidades Activas y Pasivas de Eä-Core OS (Estado al Cap. 27 · Nv. 70)</h3>
+    <ul>
+      <li><strong>Depurador de Realidad (Debug Vision Nv. 5):</strong> Escanea niveles, intenciones, flujos mágicos, vectores tácticos de combate y capas de corrupción.</li>
+      <li><strong>Compilador Rúnico en Tiempo Real (99,97 %):</strong> Traduce lógica de software a estructuras Cirth y flujos Tengwar sobre la Música de los Ainur.</li>
+      <li><strong>Velo Metafísico (Nv. 6):</strong> Comprime el aura divina para ocultar el nivel real (aparente Nv. 12 ante observadores comunes).</li>
+      <li><strong>Radar del Abismo:</strong> Triangula presencias profundas bajo tierra hasta 800 millas mediante balizas o piedras resonantes.</li>
+      <li><strong>Fëa-Link (Nv. 1 · 100 % Completo):</strong> Vínculo espiritual y emocional mutuo con Arwen Undómiel; permite comunicación a distancia, estabilidad emocional y mitigación de la Sombra de Udûn.</li>
+      <li><strong>Algoritmo de Purificación (97 % completo):</strong> Protocolo de cuatro fases (reconocer, aislar, depurar y restaurar mediante invitación y canto doble de Aman) diseñado para liberar a Rúmilë.</li>
+      <li><strong>Llave de Vacío:</strong> Bloqueada hasta Nivel 100.</li>
+    </ul>
+  </section>
+
+  <!-- SECCIÓN 4: PERSONAJES -->
+  <section id="personajes" class="bible-block">
+    <h2>4. Fichas de Personajes Principales</h2>
+    <ul>
+      <li><strong>Aurendil (Nv. 70):</strong> Hijo de Glorfindel y Rúmilë. Mente analítica de ingeniero del año 2025 fusionada con la nobleza melancólica de un Noldo de Aman. Porta a <em>Lómenar</em> (acero estelar, mithril y polvo de Rúmilë), la <em>Vaina de Ecthelion</em>, el <em>Látigo de Llama Blanca</em>, la <em>Lámpara de las Dos Voces</em> y una <em>Gota del Espejo de Galadriel</em>.</li>
+      <li><strong>Arwen Undómiel (Nv. 38 · 1,735 años en 1976 T.E.):</strong> Peredhel de linaje real, erudita de runas de Eregion y prometida de Aurendil. Lleva una cicatriz plateada en forma de relámpago en la palma derecha y la <em>Diadema de la Flor Dorada</em>. Su voz transmite la nana de Aman heredada de Rúmilë vía Idril, Elwing y Galadriel.</li>
+      <li><strong>Glorfindel (Nv. 95):</strong> Señor de la Casa de la Flor Dorada, renacido de Mandos en el 1000 T.E. Padre y mentor de Aurendil, capitán de la guardia de Rivendel.</li>
+      <li><strong>Rúmilë / Uru-Rúmilë (Nv. 94):</strong> Maia de Fuego del séquito de Arien, corrompida al 86 % por Morgoth tras sacrificarse por su hijo. Encadenada en las profundidades de las Ered Mithrin, mantiene un 14 % de núcleo solar intacto y envía fragmentos de voluntad mediante runas partidas (Tengwar ámbar / Cirth negro).</li>
+      <li><strong>Mithrandir / Olórin (Nv. 83 efectivo con Narya):</strong> Llegó en el 321 T.E. por encargo personal de Manwë para velar por Aurendil. Guardián discreto y consejero.</li>
+      <li><strong>Elrond Peredhel (Nv. 82) y Celebrían:</strong> Señores de Imladris. Elrond custodia el Molde Roto de Annatar y la Piedra de Carn Dûm en las cámaras selladas bajo la Biblioteca.</li>
+    </ul>
+  </section>
+
+  <!-- SECCIÓN 5: ESCALETA -->
+  <section id="escaleta" class="bible-block">
+    <h2>5. Escaleta de 70 Capítulos (Resumen Ejecutivo)</h2>
+    <p><span class="tag">Arco I (Caps. 1–14) · Completado</span> Despertar en Ered Luin, llegada a Mithlond y Rivendel, encuentro con Arwen, forja de Lómenar, incursión en Ost-in-Edhil, descontrol del fuego interno, centenario de Arwen (341 T.E.) y forja de la Diadema de la Flor Dorada.</p>
+    <p><span class="tag">Arco II (Caps. 15–27) · Completado</span> Regreso de Glorfindel (1000 T.E.), llegada de los Istari, Cadena de la Voz contra Angmar, caza de espectros en Tyrn Gorthad, visita a Lothlórien y el Espejo de Galadriel, Radar del Abismo (triangulación en Ered Mithrin), caída de Fornost y profecía de Glorfindel (1974–1975 T.E.), incidente con la Piedra de Carn Dûm y confesión completa de Aurendil a Arwen (1976 T.E.).</p>
+    <p><span class="tag">Arco II — Cierre (Caps. 28–30) · Próximo</span> Preparativos del descenso, expedición de reconocimiento a las Ered Mithrin, combate contra un dragón frío (Nv. 72) y escaneo directo del núcleo solar de Uru-Rúmilë.</p>
+    <p><span class="tag">Arco III (Caps. 31–48)</span> Compañía de Thorin, caída de Smaug (2941 T.E.), Batalla de los Cinco Ejércitos, descenso definitivo a las Ered Mithrin (2961 T.E.) y purificación de Rúmilë mediante la cúpula Tengwar y el canto doble de Aman.</p>
+    <p><span class="tag">Arco IV (Caps. 49–64)</span> Guerra del Anillo (3018–3019 T.E.), forja de <em>Gil-Estel</em>, boda élfica de Aurendil y Arwen, escolta encubierta de la Comunidad, Pelennor, Monte del Destino y ascenso al Nivel 100.</p>
+    <p><span class="tag">Arco V (Caps. 65–70)</span> Viaje por el Camino Recto hacia Valinor (3039 T.E.), bendición de los Valar y apertura de la brecha dimensional hacia Rocadragón en el inicio de la Danza de los Dragones (129 d.C.).</p>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- MANUSCRITO COMPLETO: CAPÍTULOS 1 AL 27 (REVISADOS Y CORREGIDOS)       -->
+  <!-- ===================================================================== -->
+
+  <article id="cap-1" class="chapter">
+    <div class="chapter-header">
+      <h2>CAPÍTULO 1: Ruptura del Sello de Piedra</h2>
+      <div class="chapter-meta">Año 321 de la Tercera Edad · Ered Luin · Nivel 42</div>
+    </div>
+    <p>La oscuridad no tenía fondo, y Aurendil llevaba demasiado tiempo cayendo en ella.</p>
+    <p>No era una caída de cuerpo. Su <em>hröa</em> yacía quieto, tendido sobre un lecho de roca que otras manos habían alisado hacía eras, con las manos cruzadas sobre el pecho como las de un rey dormido. Caía su conciencia, ese hilo delgado de <em>fëa</em> que había quedado suspendido entre dos mundos y dos vidas. Caía a través de capas de recuerdo, como quien desciende por un árbol de directorios cuyo nodo raíz se ha perdido.</p>
+    <p>Primero fue la luz de los Árboles: Telperion argentado y Laurelin dorado, entretejiéndose sobre las colinas de Tirion. Una luz que no se parecía a nada que hubiera existido después, ni a la del sol ni a la de la luna ni a la de las estrellas que Varda encendió en su desvelo. Luego, el rostro de una mujer con cabello de brasa, cuyas manos olían a pan caliente y a ceniza dulce, y que le cantaba en una lengua que ningún mortal había hablado jamás. Rúmilë. Su madre, antes de que el fuego se le volviera contra el alma.</p>
+    <p>Luego, el hombre alto de cabello de oro viejo, con una voz que podía sostener una ciudad entera. Glorfindel. Su padre, antes de la caída de Gondolin, antes del puente, antes del Balrog y del abismo.</p>
+    <p>Y debajo de todo eso, hundido como un cimiento bajo una catedral, estaba el otro recuerdo. Una habitación pequeña, bañada por el resplandor azul de tres monitores. Una taza de café frío. Un teclado con las teclas gastadas, la E casi lisa de tanto uso. Un cursor parpadeando en una terminal, esperando una orden. Una fecha en la esquina de una pantalla: 2025.</p>
+    <p>Veinticinco años, pensó la parte de él que seguía siendo ingeniero. Veinticinco años, un contrato de mantenimiento de sistemas legados y una pila de libros de Tolkien con el lomo roto. Y luego, nada.</p>
+    <p>Y después, todo.</p>
+    <p>Ese era el misterio que sus padres habían comprendido desde el día en que nació: que el niño de Valinor llevaba dentro a otro, o que el otro llevaba dentro a un niño, y que ninguno de los dos podía decir ya dónde terminaba uno y empezaba el otro. Sesenta años de los Valar habían vivido juntos, un niño que crecía bajo la luz de los Árboles y un joven de otro mundo que lo observaba todo con asombro mudo, hasta que el cielo de Beleriand se tiñó de rojo y la luz de su madre se quebró.</p>
+    <p>Lo último que recordaba era un beso en la frente, ardiente como un hierro recién sacado de la fragua, y una voz rota que susurraba:</p>
+    <p>—Duerme, mi pequeña estrella. Duerme hasta que el mundo sea capaz de cuidarte. Y si alguna vez me encuentras… perdóname.</p>
+    <p>Después, la piedra. Y el silencio.</p>
+
+    <div class="sys-window">[NOTIFICACIÓN DEL SISTEMA]
+Eä-Core OS — Secuencia de arranque detectada
+Integridad del sello: 3 % … 11 % … 29 %
+Ciclo de hibernación: 3,841 años solares
+Advertencia: reanudación de funciones vitales inminente.</div>
+
+    <p>El texto se encendió en la negrura como brasas sopladas, letras de un blanco dorado que flotaban sobre el vacío. Aurendil las reconoció con un alivio tan profundo que casi dolió. No eran palabras de ningún idioma de los Eldar, aunque sus caracteres tenían la curva elegante de los tengwar. Eran el idioma de las máquinas.</p>
+    <p class="dialogue-thought">Sigues aquí, pensó. Después de todo este tiempo, sigues aquí.</p>
+
+    <div class="sys-window">[Eä-Core OS v1.0 — Cargando módulos]
+▸ Depurador de Realidad (Debug Vision) ........ [EN ESPERA]
+▸ Compilador Rúnico en Tiempo Real ............. [EN ESPERA]
+▸ Velo Metafísico (Stealth) .................... [EN ESPERA]
+▸ Lore Archive ................................. [CARGANDO… 74 %]
+▸ Fëa-Link ..................................... [SIN VÍNCULO ACTIVO]
+▸ Llave de Vacío ............................... [BLOQUEADA — Requiere Nv. 100]</div>
+
+    <p>El último renglón le provocó una punzada de curiosidad, pero la dejó pasar. Había tiempo. Era la primera lección que los Eldar enseñaban a todos sus hijos, y también la primera que un ingeniero aprendía a la fuerza tras su primera migración fallida: no toques lo que no entiendes mientras el sistema está arrancando.</p>
+    <p>La oscuridad se resquebrajó.</p>
+    <p>El primer sentido que regresó fue el tacto, y fue una agonía.</p>
+    <p>Su cuerpo se había olvidado de sí mismo. Los dedos le pesaban como si fueran de plomo, y cada fibra de sus músculos protestó con un chasquido interno cuando intentó moverlos. El aire que entró en sus pulmones sabía a polvo, a piedra húmeda y a algo más antiguo todavía, a tiempo detenido. Tosió, y la tos resonó en un espacio cerrado, devolviéndole el eco de su propia fragilidad.</p>
+    <p>Después llegó el oído. Un goteo lento, rítmico, a su izquierda. El crujido distante de la roca que se asienta. Y bajo todo eso, algo que más sentía que escuchaba: un canto grave, constante, sin melodía humana, que provenía de la montaña misma. Era la voz de las Ered Luin, aquellas viejas montañas que habían soportado el hundimiento de Beleriand y que aún recordaban, en su nota más baja, la Música de los Ainur.</p>
+    <p>Abrió los ojos.</p>
+    <p>La luz era escasa y llegaba desde sus propias manos. Del dorso de la derecha brotaba un resplandor tenue, apenas un parpadeo plateado, y en la izquierda, un núcleo de calor anaranjado, casi imperceptible. Plata y brasa. Telperion y Laurelin. Aman y Anor.</p>
+    <p>Se incorporó con una lentitud ceremonial y las vértebras le crujieron una a una. Estaba en una cámara de unos diez pasos de diámetro, tallada en una roca gris, veteada de azul. Los muros no tenían ventana ni puerta. Sobre su lecho, una bóveda baja exhibía un entramado de runas Cirth grabadas con tal precisión que parecían trazadas con regla. Reconoció el estilo antes de leer el contenido: las líneas rectas, los ángulos nítidos, el orden casi obsesivo. Era la caligrafía de su madre cuando todavía era capaz de contener su fuego en forma de arte.</p>
+    <p>Entonces, el sistema volvió a hablar, y esta vez con una ventana completa.</p>
+
+    <div class="sys-window status-box">╔════════════════════════════════════════════════════════╗
+║             EÄ-CORE OS  ·  ESTADO DEL SUJETO           ║
+╠════════════════════════════════════════════════════════╣
+║  NOMBRE ....... AURENDIL                               ║
+║  RAZA ......... Alto Elfo Noldo / Maia de Fuego        ║
+║  NIVEL ........ 42                                     ║
+║  EDAD ......... 60 años Valar (~575 sol.) · 3,841 dorm.║
+╠════════════════════════════════════════════════════════╣
+║  HP (Vitalidad Hröa) ... 14,500 / 14,500               ║
+║  MP (Reserva Fëa) ...... 38,000 / 38,000               ║
+╠════════════════════════════════════════════════════════╣
+║  STR 145 (+40)   AGI 198 (+55)   VIT 130               ║
+║  INT 260 (+80)   WIS 215 (+60)   WILL 310              ║
+╠════════════════════════════════════════════════════════╣
+║  Llama de Anor ........... Nv. 8  ▓▓▓▓▓▓▓▓░ 88%        ║
+║  Sombra de Udûn .......... Nv. 4  ▓▓▓▓░░░░░ 45%        ║
+║  Programación Rúnica ..... Nv. 9  ▓▓▓▓▓▓▓▓▓ 94%        ║
+╚════════════════════════════════════════════════════════╝</div>
+
+    <p>Aurendil se quedó mirando la ventana durante un largo rato. Tres cifras le llamaron la atención, y ninguna era la de HP.</p>
+    <p>—Sombra de Udûn —murmuró, y su voz salió áspera, quebrada por siglos de desuso—. Cuarenta y cinco por ciento.</p>
+    <p>La ventana respondió con una nota adicional:</p>
+
+    <div class="sys-window alert">[AVISO DEL SISTEMA]
+La afinidad «Sombra de Udûn» procede de herencia materna directa.
+Estado: INACTIVA · Riesgo de activación espontánea: MODERADO.
+Recomendación: evitar exposición prolongada a fuentes de corrupción hasta completar calibración.</div>
+
+    <p>—Heredé el fuego de mi madre —dijo en voz alta, como quien lee un registro de errores—. Todo el fuego. El de la luz y el de la sombra. —Dejó caer los dedos sobre el pecho, sobre el lugar donde el beso de Rúmilë le había dejado una cicatriz invisible—. Y ahora estás ahí, mamá, ¿verdad? En algún sitio. Con un cuarenta y cinco por ciento de mí que lleva tu nombre.</p>
+    <p>Nadie contestó. La montaña seguía cantando.</p>
+    <p>Salir de la cámara fue un problema de ingeniería.</p>
+    <p>Los muros no tenían puerta, y la roca sobre su cabeza ocultaba un sello rúnico complejo, un candado de varias capas. Aurendil se puso de pie con dificultad, se apoyó contra la pared y estudió el entramado de Cirth con la misma mirada entrecerrada que antes dedicaba a un error de memoria en producción.</p>
+    <p>—A ver, a ver —murmuró—. ¿Qué escondes?</p>
+
+    <div class="sys-window">[HABILIDAD DESBLOQUEADA TEMPORALMENTE: Depurador de Realidad (Debug Vision)]</div>
+
+    <p>El mundo cambió. La bóveda se llenó de hilos de luz azulada que seguían la geometría de las runas, y de pronto lo que antes era una sola inscripción se volvió legible en capas. Primero, la capa estructural: runas que definían la posición exacta de cada bloque de roca, las tensiones del peso de la montaña, los puntos de apoyo. Hardware. Luego, la capa de flujo: líneas delgadas de energía que corrían entre las runas como corrientes entre piedras de un río. Software. Y sobre todo eso, una tercera capa, la más sutil, una firma de voluntad.</p>
+
+    <div class="sys-window">&gt;&gt; ANÁLISIS: SELLO DE HIBERNACIÓN (Clase: Maternal)
+&gt;&gt; Autor .............. Rúmilë, Maia de la llama de Arien
+&gt;&gt; Tipo ............... Bloqueo temporal con condición de liberación
+&gt;&gt; Condición .......... Liberación cuando el mundo sea seguro y el portador viva
+&gt;&gt; Estado de condición  VERDADERO
+&gt;&gt; Latencia ........... 3,841 años (EXCEDIDA)
+&gt;&gt; Nota: la autora dejó un comentario final en el código</div>
+
+    <p>Aurendil parpadeó.</p>
+    <p>—¿Un comentario? —Se acercó, y el hilo de luz se desplegó ante sus ojos en una línea de pequeñas runas Tengwar, escritas con una caligrafía que le oprimió la garganta—. Mamá, ¿escribiste comentarios en tu propio código?</p>
+    <p>Leyó:</p>
+    <p>«Hijo de mis dos soles: si estás leyendo esto, el mundo ha aprendido a esperar. No sé cuánto tiempo ha pasado ni si yo seré aún quien soy. Sal por el Norte. Sigue la luz de la estrella más baja. Un hombre de ojos grises te ayudará. Y no tengas miedo de lo que llevas dentro: el fuego no es el enemigo, solo es fuego.»</p>
+    <p>Aurendil se quedó inmóvil, con la boca entreabierta y los ojos fijos en la última línea. No se permitió llorar, pero sintió el escozor tras los párpados y la presión en el pecho, y tuvo que contar hasta diez antes de poder hablar.</p>
+    <p>—El fuego no es el enemigo, solo es fuego —repitió—. Siempre fuiste mejor que yo en las moralejas.</p>
+    <p>Cerró el puño sobre la ventana de análisis y la disolvió. Después colocó ambas manos sobre el sello, una de plata y otra de brasa, y comenzó a compilar.</p>
+    <p>La compilación del primer hechizo fue torpe, como todo lo que se hace tras demasiado tiempo sin práctica. Aurendil visualizó el sello como un archivo cifrado y trazó con la mente una orden sencilla en el aire: una instrucción fluida en Tengwar para abrir, anclada a la estructura geométrica en Cirth de la piedra, condicionada únicamente a su propia identidad.</p>
+    <p>La primera ejecución falló con un chisporroteo seco. Una oleada de calor le recorrió el brazo izquierdo, y por un instante vio algo parpadear en la periferia de su visión: una lengua de fuego negro, brevísima, que se alzó desde su mano y se desvaneció. El sistema reaccionó con una alerta roja.</p>
+
+    <div class="sys-window alert">[ALERTA · Sombra de Udûn: activación parcial]
+[Control de Voluntad: 310 / 310 — Contención exitosa]</div>
+
+    <p>—No —dijo Aurendil, y su voz sonó más firme de lo que esperaba—. Aquí no. Ahora no.</p>
+    <p>Respiró hondo y evocó a su padre, de pie sobre la muralla de Gondolin, con la túnica dorada ondeando y el sol de Valinor reflejado en la espada. No era un recuerdo hermoso por lo que vino después, pero era un recuerdo limpio. Lo usó como ancla. Y entonces, con una calma de ingeniero que depura un bucle infinito a las tres de la madrugada, reescribió la instrucción en silencio: orden de apertura vinculada exclusivamente a la Llama pura de Anor, cerrando cualquier paso a la fuente oscura de Udûn.</p>
+    <p>La segunda ejecución funcionó.</p>
+    <p>Una línea de luz blanca recorrió el techo de punta a punta, y la bóveda se abrió con un lamento de piedra antigua, no hacia arriba sino hacia el lado, como una puerta corrediza tallada por un artesano de otra era. Entró un aire frío, cargado de nieve, y con él una claridad plateada que lo cegó por un instante.</p>
+
+    <div class="sys-window">[EXPERIENCIA OBTENIDA: +1,200 XP]
+[Programación Rúnica: Nv. 9 → progreso 94 % → 95 %]
+[LOGRO DESBLOQUEADO: «Primer Commit en Arda»]</div>
+
+    <p>—Muy gracioso —murmuró Aurendil, mirando la última línea—. Muy gracioso, sistema.</p>
+    <p>Y salió a la luz.</p>
+    <p>El mundo era distinto. Eso lo supo desde el primer aliento. El aire de las Ered Luin, que en su memoria olía a pino, a hierro y a tormenta de Beleriand, ahora olía diferente: más ralo, más viejo, como un libro demasiado leído. Estaba de pie sobre una cornisa de roca desnuda, con la nieve hasta los tobillos, mirando hacia un valle donde el amanecer prendía fuego a una cadena de picos azules. Hacia el oeste, muy lejos, entre la bruma, brillaba una línea gris plateada que él reconoció con un vuelco del corazón.</p>
+    <p>El Mar.</p>
+    <p>Pero no el Mar que recordaba. Entre él y esa línea, donde antes se extendían las tierras de Beleriand con sus bosques y sus ríos, no había nada. Solo una vasta cortina de agua que había devorado reinos enteros, y una costa nueva, tallada por la ira de los Valar, que se curvaba en un golfo largo y profundo.</p>
+    <p>Abrió el Lore Archive y el sistema volcó la información como una cascada.</p>
+
+    <div class="sys-window">&gt;&gt; LORE ARCHIVE · Consulta: "Entorno actual"
+&gt;&gt; Ubicación: Ered Luin, vertiente occidental (límites de Lindon)
+&gt;&gt; Fecha: 321 T.E. (Tercera Edad del Sol)
+&gt;&gt; Divergencia temporal respecto a cronología conocida: 0 %
+&gt;&gt; Entidades de interés próximas:
+   · Mithlond (Puertos Grises) — Círdan el Carpintero de Barcos, ~Nv. 88
+   · Imladris (Rivendel) — Elrond Peredhel, ~Nv. 82
+   · Lindon / Lórinand — Galadriel y Celeborn (sin residencia fija), ~Nv. 90
+   · Nota: Sauron — sin forma ni morada conocida desde la caída de Barad-dûr (Dol Guldur aún no existe; Amon Lanc sigue libre)
+&gt;&gt; Sugerencia: evitar contacto con Sauron hasta Nv. 95</div>
+
+    <p>Aurendil frunció el ceño. Algo no le cuadraba, y tardó unos segundos en identificarlo.</p>
+    <p>—Estoy en el 321 de la Tercera Edad —dijo en voz alta—. Pero la Primera Edad terminó hace…</p>
+    <p>—Más de tres mil años —completó una voz a su espalda—. Y llevas diez minutos hablándole a la piedra, joven señor, lo cual es extraño incluso para un Noldo.</p>
+    <p>Aurendil giró sobre sus talones con la mano ya en el aire, y su cuerpo recordó los gestos de un guerrero que no sabía cuándo los había aprendido. Una línea de fuego blanco chisporroteó entre sus dedos.</p>
+    <p>Frente a él, a unos veinte pasos, de pie sobre la nieve sin dejar huella, había un hombre de rostro anguloso y ojos del color de la ceniza. Llevaba una capa gris con capucha, un bastón de roble sin adornos y un cinturón de cuero donde colgaba una pequeña bolsa de lana. No parecía armado. No parecía amenazante. Parecía un viajero cansado que había subido una montaña por capricho.</p>
+
+    <div class="sys-window">[DEBUG VISION: Escaneo iniciado]
+&gt;&gt; ENTIDAD: [DATOS PARCIALMENTE OCULTOS]
+&gt;&gt; Nombre aparente: Mithrandir (alias)
+&gt;&gt; Raza: Desconocida (Clase: Maia, encubierta)
+&gt;&gt; Nivel: ??? (estimación: 70 - 80)
+&gt;&gt; Estado: "Velo de mortalidad aplicado" — poder restringido
+&gt;&gt; Intención: NEUTRA-BENEVOLENTE
+&gt;&gt; Aviso: la entidad ha detectado tu escaneo</div>
+
+    <p>—Ah —dijo el anciano, y una sonrisa leve le arrugó la comisura de los ojos—. Así que estás mirando dentro de mí. Cuidado, muchacho. Hay cosas que se rompen si se manipulan sin permiso.</p>
+    <p>—Disculpad —dijo Aurendil con cierta rigidez, y disolvió el escaneo—. Es un hábito reciente.</p>
+    <p>—Un hábito muy peculiar. —El extraño inclinó la cabeza—. Te esperaba, ¿sabes? Hace varios años que vigilo esta montaña. Hay una sala sellada bajo las Ered Luin, y alguien dejó un mensaje para quien la abriera. «Un hombre de ojos grises te ayudará», decía. —Se tocó el pecho con una mano nudosa—. Supongo que ese hombre soy yo, aunque no recuerdo haber sido invitado.</p>
+    <p>Aurendil se quedó inmóvil. Había leído esa línea hacía menos de diez minutos.</p>
+    <p>—¿Cómo…? —empezó.</p>
+    <p>—Tu madre me lo pidió —dijo el hombre con suavidad—. Hace mucho tiempo, antes de que yo tuviera este cuerpo, antes de que me llamaran de otro modo. Ella era una criatura de fuego y de luz, y yo era un espíritu del mismo linaje, aunque de otra casa. —Hizo una pausa y su rostro se ensombreció—. No pude salvarla. Pero cuando me enviaron a esta tierra con este disfraz, juré que cuidaría al hijo que dejó dormido bajo la piedra.</p>
+    <p>Aurendil bajó la mano lentamente. La llama blanca entre sus dedos se apagó.</p>
+    <p>—Entonces sabéis quién soy.</p>
+    <p>—Sé qué eres, lo cual es más importante y más peligroso. —El anciano ladeó la cabeza—. Eres la mezcla de dos fuegos que no deberían tocarse. Eres un secreto de los Valar y una pesadilla de los Oscuros. Y llevas dentro algo más, algo que viene de muy lejos, de un mundo cuya música no suena en Arda. —Sonrió con tristeza—. No me mires así. Hay secretos que incluso los Maiar guardamos en silencio.</p>
+    <p>Un silencio largo cayó entre ambos, solo roto por el viento sobre la cornisa. Aurendil sintió que algo se asentaba en su interior, el principio de una confianza que no sabía si era sensata.</p>
+    <p>—¿Cómo debo llamaros? —preguntó al fin.</p>
+    <p>—Por ahora, Mithrandir. «El Peregrino Gris». Y tú, mi joven amigo…</p>
+    <p>—Aurendil.</p>
+    <p>—Aurendil. —El nombre pareció pesar en su boca, como una piedra que cae en un pozo profundo—. «El Servidor de la Estrella». Un buen nombre. Tu madre tenía buen gusto.</p>
+
+    <div class="sys-window">[NOTIFICACIÓN DEL SISTEMA]
+Nueva entidad registrada en el Lore Archive: «Mithrandir».
+Relación: ALIADO POTENCIAL (Confianza: 40 %)
+Advertencia: la entidad oculta su nivel real. Se recomienda cautela proporcional.</div>
+
+    <p>Aurendil apartó la notificación con un gesto de mano. No necesitaba el sistema para saber lo que el anciano le ocultaba, o al menos para sospecharlo. Pero tampoco necesitaba nadie que le dijera que, en una tierra que desconocía, casi cuatro milenios después de todo lo que había amado, un aliado a medias era mejor que ninguno.</p>
+    <p>—Dime —prosiguió el anciano, bajando el bastón y señalando con él hacia el oeste—, ¿tienes hambre? Hay una aldea de pescadores en la costa, a dos días de marcha. Y hay un hombre en los Puertos Grises que querrá conocerte mucho antes de que lo comprenda.</p>
+    <p>—¿Círdan?</p>
+    <p>—Ya veo que sabes más de lo que aparentas. —El peregrino sonrió—. Sí, Círdan. Y después de él…, bueno, hay un valle escondido al este donde viven personas a las que tal vez quieras conocer. Pero una cosa cada vez.</p>
+    <p>Aurendil asintió despacio. Respiró el aire frío de un mundo que no era el suyo ni dejaba de serlo. Sobre su hombro, la montaña seguía cantando.</p>
+    <p class="dialogue-thought">Primer objetivo, pensó, y el sistema lo registró sin que él lo ordenara.</p>
+
+    <div class="sys-window">[MISIÓN PRINCIPAL ACTUALIZADA]
+▸ «Despertar del Sello»: COMPLETADA.
+▸ NUEVA MISIÓN: «Rumbo a Mithlond» — Llega a los Puertos Grises sin revelar tu verdadero nivel.
+▸ Recompensa: +3,000 XP · Desbloqueo: Velo Metafísico (activación)</div>
+
+    <p>Echó a andar sobre la nieve, y el Peregrino Gris le siguió a su lado, en silencio.</p>
+    <p>Al pie de la cornisa, entre las raíces de un pino enano, brillaba una diminuta runa tallada a mano, casi borrada por la intemperie. La mitad de ella era un Tengwar cálido, ámbar. La otra mitad, un Cirth negro como el carbón. Aurendil no la vio.</p>
+  </article>
+
+  <article id="cap-2" class="chapter">
+    <div class="chapter-header">
+      <h2>CAPÍTULO 2: Ecos de un Mundo Cambiado</h2>
+      <div class="chapter-meta">Año 321 T.E. · Camino a Mithlond · Nivel 42</div>
+    </div>
+    <p>El camino hacia el mar duró cuatro días, y Aurendil los usó para aprender a caminar de nuevo.</p>
+    <p>Parecía una tontería, pero no lo era. Su cuerpo había dormido casi cuatro milenios y, aunque el Sistema le había restaurado cada punto de vitalidad, la memoria muscular de un <em>hröa</em> no se reconstruye con un parche. Tropezó dos veces en el primer día. Calculó mal un salto sobre un arroyo y acabó con las botas empapadas. Y en la segunda noche, mientras intentaba encender una hoguera con una chispa de fuego blanco, estuvo a punto de prender fuego a un pino entero.</p>
+    <p>—Más suave —dijo Mithrandir desde el otro lado de las llamas, sin alzar la vista de su pipa—. No estás cortando una cuerda con un hacha, muchacho. Estás pidiéndole a una hoja seca que arda.</p>
+    <p>—Lo sé —gruñó Aurendil, apagando el fuego descomunal con un movimiento de la mano—. Mi problema no es la teoría. Es que mi aplicación no tiene control de granularidad.</p>
+    <p>—No sé qué significa eso, pero me suena a excusa.</p>
+    <p>—Lo es.</p>
+    <p>El anciano rió por lo bajo, una risa breve y grave que se perdió entre las ramas. Aurendil, a su pesar, sonrió. Descubrió que le caía bien. No había esperado eso.</p>
+    <p>Pasaron los días en un ritmo extraño y apacible. Mithrandir hablaba poco de sí mismo, pero mucho del mundo: de las tierras que habían cambiado, de las ciudades que habían caído, de los reyes que habían olvidado sus juramentos. Contaba las historias con el humor desganado de quien las ha visto repetirse demasiadas veces.</p>
+    <p>—Hubo un tiempo —dijo la tercera noche, mientras el viento arrastraba la bruma por los pinos— en que los Noldor caminaban por estas tierras con la cabeza alta y el corazón encendido. Hoy, los pocos que quedan en Lindon se parecen a las velas casi agotadas: aún dan luz, pero tiemblan.</p>
+    <p>—¿Y los Hombres?</p>
+    <p>—Los Hombres hacen lo que siempre han hecho —respondió el peregrino—. Construyen, se pelean, mueren y construyen otra vez. —Hizo una pausa—. Es su manera de ser inmortales.</p>
+    <p>Aurendil guardó silencio. Algo en esa frase le resonó con más fuerza de lo que habría querido admitir.</p>
+    <p>Aprendió también a manejar el Sistema. No era una tarea fácil. El Eä-Core OS había sido diseñado, quién sabía por quién, con la lógica de un videojuego y la sutileza de un lenguaje de programación de bajo nivel. Podía mostrarle estadísticas, pero también esperaba que él las interpretara. Era como tener un compañero de trabajo brillante, eficaz y absolutamente literal.</p>
+    <p>Una mañana, mientras bajaban por una ladera cubierta de helechos, abrió el menú de habilidades y se quedó mirando las opciones.</p>
+
+    <div class="sys-window status-box">╔══════════════════════════════════════════════╗
+║          HABILIDADES · ESTADO ACTUAL          ║
+╠══════════════════════════════════════════════╣
+║  [A] Debug Vision ............. Nv. 3 · Activo ║
+║  [A] Compilador Rúnico ........ Nv. 9 · Activo ║
+║  [P] Velo Metafísico .......... Nv. 1 · LISTO  ║
+║  [P] Lore Archive ............. Nv. 5 · Activo ║
+║  [P] Fëa-Link ................. Nv. 0 · Latente║
+║  [X] Llave de Vacío ........... BLOQUEADA      ║
+╚══════════════════════════════════════════════╝</div>
+
+    <p>Se detuvo en el Velo Metafísico. La descripción rezaba: «Comprime tu aura divina hasta ocultar tu verdadero nivel. A mayor nivel del observador, menor eficacia. Costo: 120 MP por hora. Advertencia: no oculta las fuentes de Sombra de Udûn bajo estrés emocional intenso.» Aurendil leyó la última frase dos veces.</p>
+    <p>—¿Bajo estrés emocional intenso? —preguntó al aire.</p>
+    <p>La ventana pestañeó. No respondió, pero una línea nueva se desplegó bajo la descripción.</p>
+
+    <div class="sys-window">[Consejo del Sistema]
+La Sombra de Udûn responde a estados emocionales extremos (miedo, ira, duelo).
+Se recomienda desarrollar un ancla emocional estable.</div>
+
+    <p>—Un ancla emocional —repitió, entre divertido y resignado—. El sistema me manda a hacer terapia.</p>
+    <p>—¿Decías algo? —preguntó Mithrandir sin volverse.</p>
+    <p>—Hablaba conmigo mismo.</p>
+    <p>—Ya me di cuenta. Y, por si sirve de algo, no eres el primero que lo hace. —El peregrino se detuvo sobre un tronco caído y miró hacia el horizonte—. Mira.</p>
+    <p>Aurendil se acercó. Ante ellos, al final de la ladera, el bosque se abría de golpe y la tierra descendía en un amplio golfo azul. Y en el fondo del golfo, abrazadas por una curva de acantilados blancos, se alzaban las torres de una ciudad de marfil y plata, con los muelles plagados de mástiles esbeltos, las velas cuidadosamente recogidas.</p>
+    <p>Mithlond. Los Puertos Grises.</p>
+    <p>Aurendil sintió que algo se le ablandaba en el pecho, aunque no habría podido decir si era alegría o dolor. En su memoria de Valinor, los Puertos de Alqualondë eran de un blanco deslumbrante, con arcos de perlas, fuentes de cristal y naves en forma de cisnes. Mithlond era más sobria, más antigua, más cansada. Pero tenía una dignidad que Alqualondë nunca había necesitado, la de las cosas que perduran por pura voluntad.</p>
+    <p>—Es hermosa —dijo.</p>
+    <p>—Es la última —respondió Mithrandir en voz baja—. Y por eso es hermosa.</p>
+    <p>Los guardias los detuvieron a las puertas de la ciudad. Eran dos elfos altos, de cabellos oscuros y mirada serena, con armaduras de plata sencilla y lanzas de fresno. No los apuntaron con las armas, pero tampoco las bajaron. El más joven, de ojos castaños y gesto severo, avanzó un paso.</p>
+    <p>—Identificaos —dijo en sindarin.</p>
+    <p>Aurendil respondió en la misma lengua sin pensarlo, con un acento que le sonó arcaico incluso a él.</p>
+    <p>—Soy Aurendil. Vengo del Norte, de las Ered Luin. Busco audiencia con el Señor Círdan.</p>
+    <p>Los dos guardias se miraron. Algo en su acento, en su postura o en su luz había alterado el aire. El mayor, un elfo de ojos grises, achicó los párpados.</p>
+    <p>—Ese acento —murmuró—. No es de aquí. No es siquiera de esta edad. —Se volvió hacia Mithrandir—. ¿Quién es este joven?</p>
+    <p>—Un viajero —dijo el peregrino con una sonrisa plácida—. Y como todos los viajeros, necesita comida caliente, cama y un sitio donde nadie le haga preguntas incómodas.</p>
+    <p>—Eso lo decidirá el Señor Círdan.</p>
+    <p>—Naturalmente.</p>
+    <p>Aurendil no dijo nada, pero activó el Velo Metafísico con un pensamiento. Notó un cosquilleo frío extendiéndose por la piel, y al mirarse las manos vio que el resplandor plateado y la brasa anaranjada se habían apagado por completo, como si alguien hubiera cerrado un grifo.</p>
+
+    <div class="sys-window">[VELO METAFÍSICO — ACTIVO]
+Nivel aparente: 12 · Consumo: 120 MP/h
+Aura divina: comprimida (efectividad: 88 %)</div>
+
+    <p>Los guardias ya no parecieron mirar algo extraordinario. Se relajaron un poco.</p>
+    <p>—Seguidnos —dijo el joven.</p>
+    <p>Mithlond por dentro era una ciudad hecha de susurros. Los elfos que caminaban por sus calles lo miraban de reojo, con esa curiosidad discreta de un pueblo que lleva demasiados años esperando noticias. Había mercaderes que vendían telas teñidas con algas azules, aprendices que cargaban cajas de herramientas hacia los astilleros y mujeres que cantaban en las ventanas con voces dulces y lejanas. El olor a salitre y madera recién aserrada se mezclaba con el de pan caliente. Aurendil lo notó con un nudo en la garganta.</p>
+    <p>Los guardias los condujeron por una escalinata de piedra blanca hasta una explanada abierta sobre el mar. Allí, al borde de un muelle en el que estaba amarrado un navío en plena construcción, un hombre alto y delgado, de barba larga y plateada, supervisaba la colocación de una cuaderna. Vestía una túnica azul sin adornos, y de su cinturón colgaba un martillo de carpintero con el mango desgastado por el uso. Aurendil lo reconoció al instante.</p>
+
+    <div class="sys-window">[DEBUG VISION: Escaneo iniciado]
+&gt;&gt; ENTIDAD: CÍRDAN EL CARPINTERO DE BARCOS
+&gt;&gt; Raza: Sindar (Teleri) · Portador de Narya (oculto)
+&gt;&gt; Nivel: 88 · HP: ~31,000 / MP: ~52,000
+&gt;&gt; Aura: Antigua, sosegada, vigilante · Intención: CAUTELOSA-AMABLE
+&gt;&gt; Aviso: la entidad detecta anomalías de aura en tu radio</div>
+
+    <p>Aurendil cortó el escaneo de inmediato y apretó los dientes. Un nivel 88, y él era un 42 enmascarado de 12. Si Círdan percibía el hilo de su aura detrás del velo, el disfraz se vendría abajo en segundos.</p>
+    <p>El elfo se volvió despacio, como si hubiera sentido algo, y los ojos que se posaron en Aurendil eran ojos de un mar muy profundo.</p>
+    <p>—Mithrandir —dijo con una voz de olas lentas—. Has vuelto sin avisar.</p>
+    <p>—Siempre he tenido ese vicio.</p>
+    <p>—Así es. —Los ojos del carpintero de barcos regresaron a Aurendil—. ¿Y quién es tu acompañante?</p>
+    <p>—Un joven que acaba de despertar de un largo sueño —respondió el peregrino—. Con hambre, con dudas, y con un acento que recuerda la edad en que tú y yo éramos más jóvenes.</p>
+    <p>Círdan sostuvo la mirada de Aurendil durante un largo momento. Y el joven comprendió lo que Mithrandir había querido decir con «un hombre que querrá conocerte mucho antes de que lo comprenda». El elfo no leyó sus estadísticas. No necesitaba un Sistema. Leyó algo más antiguo.</p>
+    <p>—Tú no eres de esta edad —dijo al fin, con suavidad—. Ni siquiera de la anterior. Hablas como los que cantaban en Tirion.</p>
+    <p>Aurendil sintió que la garganta se le cerraba.</p>
+    <p>—No me engañáis —prosiguió Círdan—. No sé cómo lo sé. Pero lo sé. Tu luz…, aunque la ocultes, no puede mentirme. —Dio un paso hacia él—. ¿De dónde vienes, hijo?</p>
+    <p>Era la pregunta que Aurendil había temido y esperado. Tenía dos respuestas posibles: la verdad completa, o una verdad recortada. El Sistema le sugirió una tercera opción, y la descartó con un parpadeo. No iba a mentir a un hombre como ese. Pero tampoco iba a soltarlo todo.</p>
+    <p>—Nací en Valinor —dijo despacio—, en los Años de los Árboles. Dormí bajo la roca de las Ered Luin durante largo tiempo. Mi madre me selló allí para protegerme de algo que no pudo vencer.</p>
+    <p>Un murmullo recorrió la explanada. Los carpinteros habían dejado de martillear, y las mujeres de las ventanas habían callado.</p>
+    <p>—¿Quién fue tu madre? —preguntó Círdan.</p>
+    <p>—Rúmilë.</p>
+    <p>El nombre cayó entre ellos como una piedra en aguas quietas. Círdan palideció. Pasaron varios latidos antes de que hablara de nuevo.</p>
+    <p>—Rúmilë de la llama de Arien —murmuró—. Ella cayó en la Guerra de la Cólera, o eso decían. Y su esposo…</p>
+    <p>—Glorfindel. Murió en la caída de Gondolin, luchando contra un Balrog para salvar a los refugiados. —La voz de Aurendil no tembló, aunque algo se le rompió por dentro—. Mi madre quedó… cambiada después. No sé qué fue de ella. Espero poder averiguarlo.</p>
+    <p>Silencio. Después, para sorpresa de todos, Círdan se arrodilló. No fue una reverencia teatral. Fue el gesto sencillo de un anciano que se agacha para mirar a un niño a los ojos. Posó una mano sobre el hombro de Aurendil, y el joven notó en su palma el temblor de algo inmensamente antiguo.</p>
+    <p>—Hijo de Glorfindel —dijo—. Hijo de la estrella de la mañana. Tu padre fue amigo mío en una edad que casi he olvidado. Y tu madre… —Se interrumpió, y por un momento Aurendil vio brillar los ojos del carpintero de barcos—. Tu madre cantó una vez en mis muelles, la noche en que botamos un navío. Hace muchísimo tiempo.</p>
+    <p>—No lo sabía.</p>
+    <p>—No tenías por qué. —Se incorporó con lentitud—. Sé bienvenido a Mithlond, Aurendil. Eres huésped de mi casa mientras quieras serlo. Y que nadie te pregunte nada que no quieras responder.</p>
+
+    <div class="sys-window">[NOTIFICACIÓN DEL SISTEMA]
+Relación con Círdan: 0 % → 55 % (CONFIANZA ALTA)
+LOGRO DESBLOQUEADO: «Reconocido por un Antiguo»
+[EXPERIENCIA OBTENIDA: +2,000 XP]</div>
+
+    <p>Aurendil exhaló, y el aire le salió con un temblor que no pudo contener. Cerca de él, Mithrandir lo miraba con esa sonrisa discreta y llena de cálculo, la de un jugador de ajedrez que acaba de ver cómo una pieza avanza exactamente donde había previsto.</p>
+    <p>Esa noche cenó con Círdan en una sala pequeña de la casa del Señor de los Puertos, con ventanales abiertos hacia el mar. Había pescado asado con hierbas, pan caliente y vino de Dorwinion, ligero y dorado. Mithrandir comía en silencio, con un apetito discreto, mientras Círdan interrogaba a Aurendil con una cortesía infinita y una precisión quirúrgica.</p>
+    <p>—¿Y cuántos años dices que tenías cuando te selló tu madre?</p>
+    <p>—Sesenta años de Valinor.</p>
+    <p>—Sesenta años de los Valar —murmuró Círdan—, casi seis siglos de los nuestros. Joven todavía, para nuestra gente. —Se recostó—. Y desde entonces, ¿has estado dormido todo este tiempo?</p>
+    <p>—Hasta hace cinco días.</p>
+    <p>—Y aun así hablas como un adulto. Piensas como un adulto. —El elfo entornó los ojos—. Hay algo más en ti, ¿verdad? Algo que no es de Valinor ni de ningún lugar que yo conozca.</p>
+    <p>Aurendil dejó la copa sobre la mesa con cuidado. Sintió la mirada atenta de Mithrandir y comprendió que el peregrino esperaba su respuesta con la misma intensidad.</p>
+    <p>—Sí —dijo al fin—. Hay algo más.</p>
+    <p>—¿Quieres contármelo?</p>
+    <p>—Todavía no.</p>
+    <p>—Está bien. —Círdan asintió sin mostrar decepción—. La confianza se construye, no se exige. Y los secretos se guardan mejor cuando uno decide cuándo revelarlos.</p>
+    <p>Aurendil lo miró con una gratitud que no supo expresar. Dentro de su ventana, el Sistema parpadeó con una nueva notificación:</p>
+
+    <div class="sys-window">[NOTIFICACIÓN]
+Fëa-Link: detectada una afinidad latente en tu entorno próximo.
+Origen: sudeste · Distancia: ~480 millas · Fuerza: débil pero creciente.
+Estado: NO ACTIVADO.</div>
+
+    <p>—¿Qué es eso? —murmuró, sin darse cuenta de que lo decía en voz alta.</p>
+    <p>—¿Qué es qué? —preguntó Círdan.</p>
+    <p>—Nada. Una sensación.</p>
+    <p>El carpintero de barcos lo estudió un instante con una expresión tan paciente que Aurendil casi se sintió desnudo. Después sonrió, con una sonrisa cansada y generosa.</p>
+    <p>—En Imladris, a un mes de camino hacia el este —dijo—, vive un amigo mío que también sabe de sensaciones. Se llama Elrond. Y tiene una hija a la que le gustan los libros más que a ti los acertijos. —Alzó su copa—. Pero eso será otro día.</p>
+    <p>Aurendil no respondió. Se limitó a mirar por el ventanal. Más allá del puerto, sobre la línea oscura del mar, brillaba una estrella solitaria, muy baja, casi rozando las olas. Eärendil, pensó. La estrella más baja. Y sin saber por qué, sintió que desde algún lugar muy lejano, hacia el este, alguien también la estaba mirando.</p>
+  </article>
+
+  <article id="cap-3" class="chapter">
+    <div class="chapter-header">
+      <h2>CAPÍTULO 3: El Valle de Imladris</h2>
+      <div class="chapter-meta">Año 321 T.E. · De Mithlond a Rivendel · Nivel 42</div>
+    </div>
+    <div class="sys-window">[MISIÓN COMPLETADA: «Rumbo a Mithlond»]
+Recompensa entregada: +3,000 XP · Velo Metafísico: Nv. 1 → Nv. 2
+[Nota del Sistema: el retraso en la entrega se debió a una verificación de «identidad de testigo». Aprobada por Círdan.]</div>
+
+    <p>La ventana se había quedado esperando tres días a que él la mirase. Aurendil la leyó apoyado contra la borda de un pequeño bote de río, entre dos sacos de grano, mientras el Lhûn se deslizaba bajo el casco con la parsimonia de una idea antigua.</p>
+    <p>—Los sistemas de recompensa siempre tardan en la fase de verificación —murmuró—. Hay cosas que ni un mundo mitológico perdona.</p>
+    <p>—¿Hablas con las notificaciones otra vez? —preguntó Mithrandir desde la popa, sin apartar la vista de la caña del timón.</p>
+    <p>—Me gusta tener una conversación con alguien que no me contradiga.</p>
+    <p>—Pronto aprenderás que eso es un defecto.</p>
+    <p>Habían dejado Mithlond al amanecer del quinto día. Círdan los había despedido en el muelle con un abrazo breve, de los que se dan a los hijos de viejos amigos, y con un paquete envuelto en tela azul que Aurendil aún no había abierto. «Ábrelo cuando necesites recordar quién eres», había dicho. Aurendil lo guardaba entre la túnica y el pecho, y lo sentía latir como una segunda respiración.</p>
+    <p>El viaje fue largo. Remontaron el Lhûn hasta donde el cauce se estrechaba, cruzaron los bosques de Eriador a pie y durmieron al raso bajo estrellas que Aurendil reconocía una por una. Mithrandir caminaba delante, con el bastón al hombro y una pipa humeante entre los dientes, y de vez en cuando se detenía para señalar un túmulo, un viejo camino o una torre de vigía desmoronada.</p>
+    <p>Una noche, junto al fuego, Aurendil se atrevió a preguntar lo que llevaba días masticando.</p>
+    <p>—El Lore Archive me avisó de algo en Mithlond. —Se frotó la nuca, incómodo—. Una divergencia del tres por ciento respecto a lo que yo sabía. Decía: «Llegada anticipada de Olórin».</p>
+    <p>La pipa de Mithrandir se detuvo a medio camino de los labios.</p>
+    <p>—Vaya —dijo al cabo de un rato—. Tu libro de memoria es más indiscreto de lo que parecía.</p>
+    <p>—Olórin —repitió Aurendil con cuidado— es uno de los Maiar de Manwë. Y según lo que yo sé, no debería caminar por la Tierra Media hasta dentro de seiscientos setenta y nueve años. Cuando lleguen los Cinco.</p>
+    <p>—Tu conocimiento es notable. —Mithrandir dejó la pipa sobre una piedra—. Y, como todo conocimiento notable, tiene un defecto: describe lo que iba a ocurrir, no lo que ocurre. —Lo miró de frente, con esos ojos del color de la ceniza que a ratos parecían dos pozos de luz—. Vine antes de tiempo. Solo, sin báculo, sin título y sin que nadie lo supiera salvo Manwë. Me pidió que velara a un niño dormido bajo las Ered Luin hasta que despertara. Cuando despertase, mi tarea más urgente sería dejar de ser necesario.</p>
+    <p>—¿Y el resto de los Istari?</p>
+    <p>—Llegarán a su hora, y esa hora no cambia por mí. —Sonrió con tristeza—. Pero conviene que lo guardes para ti, muchacho. No porque sea un secreto peligroso, sino porque hay pocas cosas que los sabios soporten peor que un joven que sabe demasiado.</p>
+    <p>Aurendil lo pensó un momento. Después abrió el Lore Archive y anotó una línea nueva, sin comentarios.</p>
+
+    <div class="sys-window">&gt;&gt; LORE ARCHIVE · Entrada modificada
+&gt;&gt; Entidad: Olórin / Mithrandir (futuro Gandalf)
+&gt;&gt; Llegada: 321 T.E. (anticipada 679 años)
+&gt;&gt; Causa: misión personal de Manwë (custodia de Aurendil)
+&gt;&gt; Divergencia acumulada: 3 % · Riesgo de efecto mariposa: BAJO</div>
+
+    <p>—Efecto mariposa —murmuró, y no pudo evitar una sonrisa torcida—. Qué elegante manera de llamar a «he roto el guion y todavía no sé cómo».</p>
+    <p>Rivendel se les apareció una tarde de otoño, cuando el sol ya se inclinaba hacia el oeste. El sendero descendía por un bosque de hayas de hojas color cobre, y de pronto los árboles se abrieron y el suelo se hundió en un valle profundo y estrecho, tallado por un río que cantaba entre las rocas. Al fondo, colgada entre cascadas y escalinatas de piedra clara, se alzaba una casa sin torreones ni murallas, hecha de terrazas, galerías y arcos abiertos al cielo. Parecía no haber sido construida, sino crecida, como una enredadera que hubiera decidido ser arquitectura.</p>
+    <p>Imladris, pensó Aurendil. La Última Casa Hospitalaria al Este del Mar. Bajo la superficie visible, el Debug Vision percibía un lienzo inmenso de runas de protección, finas como telarañas, entretejidas en la piedra y el aire.</p>
+
+    <div class="sys-window">[DEBUG VISION · Escaneo pasivo]
+Barrera de Imladris: Clase Anillo Mayor (influencia de Vilya)
+Capas detectadas: 14 · Latencia: 0 ms · Integridad: 99.7 %
+Comentario del Sistema: «Código antiguo, no documentado, extraordinariamente elegante».</div>
+
+    <p>—Esto —dijo Aurendil, casi sin voz— es el mejor trabajo de arquitectura de sistemas que he visto jamás.</p>
+    <p>—Elrond se alegrará de saberlo —respondió Mithrandir, burlón—. Aunque quizá prefiera que no se lo digas con esas palabras.</p>
+    <p>Cruzaron el puente de piedra que salvaba el Bruinen. En su extremo, a la sombra de un arco cubierto de hiedra, los esperaba un elfo alto, de cabello negro y ojos de un gris tan profundo que parecían contener el invierno. Llevaba una túnica sencilla de color azul oscuro, sin joyas, y sobre la frente, un círculo de plata discreto.</p>
+
+    <div class="sys-window">[DEBUG VISION: Escaneo breve]
+&gt;&gt; ENTIDAD: ELROND PEREDHEL
+&gt;&gt; Raza: Peredhel (Elfo / Hombre / Maia, linaje triple) · Nivel: 82
+&gt;&gt; Portador de: Vilya (Anillo del Aire)
+&gt;&gt; Aura: Contenida, sabia, compasiva · Intención: HOSPITALARIA-ALERTA</div>
+
+    <p>Aurendil cortó el escaneo con un reflejo casi avergonzado. Sabía que Elrond lo notaría. Lo que no esperaba era que, además, le sonriera.</p>
+    <p>—Es un gesto de cortesía —dijo Elrond con voz suave— pedir permiso antes de leer a un huésped. Pero comprendo que es un hábito nuevo y que aún no sabes cuándo se debe usar. Lo permitiré esta vez.</p>
+    <p>—Perdonad —murmuró Aurendil—. No se repetirá.</p>
+    <p>—Se repetirá, por supuesto. —Los ojos grises centellearon con un humor discreto—. Pero eso es lo que hace la gente joven. Bienvenido a mi casa, Aurendil, hijo de Glorfindel.</p>
+    <p>El joven se quedó paralizado.</p>
+    <p>—¿Cómo…?</p>
+    <p>—Círdan me envió un halcón mensajero antes de que partierais —dijo el señor de Rivendel con delicadeza—. Una nota breve. Escribió tres frases: «Ha despertado. Es hijo de Glorfindel y Rúmilë. Cuídalo mejor de lo que yo pude cuidar a su padre.» —Hizo una pausa, y su voz bajó de tono—. No me dijo qué quería decir con esa última frase. No me hacía falta. Sé lo que Círdan sintió cuando cayó Gondolin.</p>
+    <p>Aurendil tragó saliva.</p>
+    <p>—Vos… vos no podéis haber conocido a mi padre.</p>
+    <p>—No. —Elrond negó con la cabeza—. Nací veintidós años después de la caída de la ciudad. Pero mi madre Elwing me contó las historias que mi padre Eärendil heredó de la suya, Idril, y hablaban de él en voz baja, como se habla de los muertos que siguen presentes. «El hombre de la Casa de la Flor Dorada que se quedó atrás para que otros vivieran.» Era una historia que escuché antes de dormir, muchas noches.</p>
+    <p>Dio un paso adelante y, para sorpresa de Aurendil, le puso las dos manos sobre los hombros.</p>
+    <p>—Eres, pues, un pedazo de esa historia que ha caminado hasta mi puerta —dijo Elrond—. Y yo, que he pasado casi cuatro milenios guardando recuerdos ajenos, te recibo con una alegría que no puedo explicar. —Soltó los hombros y se enderezó—. Pero ya hablaremos. Primero comerás, y después dormirás. Los recién despertados suelen olvidar que el hambre existe.</p>
+    <p>Detrás de Aurendil, Mithrandir se limpió la garganta con falsa discreción.</p>
+    <p>—Y yo, supongo, soy un viajero cualquiera.</p>
+    <p>—Tú eres un fastidio, Mithrandir —replicó Elrond, sin perder la compostura—. Un fastidio ineludible. Entra antes de que cambie de opinión.</p>
+    <p>Le asignaron un cuarto en el ala este, con una cama de madera de abedul, una chimenea de piedra clara y un ventanal enorme que daba a la cascada. Estaba medio adormilado junto al fuego cuando el Sistema vibró.</p>
+
+    <div class="sys-window">[NOTIFICACIÓN]
+Fëa-Link: resonancia aumentada (3 % → 11 %).
+Origen: dentro del perímetro de Imladris. Distancia: ~140 yardas.
+Estado: NO ACTIVADO · Recomendación: mantener contacto visual breve.</div>
+
+    <p>La encontró a la mañana siguiente, por casualidad. Se había levantado temprano y había salido a recorrer la casa hasta dar con una puerta doble de madera tallada. Era una biblioteca circular de dos pisos, con estanterías que subían hasta el techo de cristal coloreado, escaleras de caracol y una luz dorada que bañaba el polvo suspendido en el aire.</p>
+
+    <div class="sys-window">[LORE ARCHIVE: Resonancia activada]
+Ubicación: Biblioteca Antigua de Imladris
+Contenido estimado: 41,300 volúmenes · 7,100 de ellos ausentes del Lore Archive</div>
+
+    <p>—Madre mía —susurró Aurendil—. Siete mil libros que nunca he leído.</p>
+    <p>—Siete mil cien, para ser exactos —dijo una voz desde arriba, y no sonaba ni sorprendida ni hostil—. Y hay tres más que se han extraviado en el sótano desde que mi hermano Elladan usó uno como posavasos.</p>
+    <p>Aurendil alzó la mirada. En el balcón del segundo piso, sentada en el borde de una escalera de caracol con las piernas colgando y un pergamino abierto sobre las rodillas, había una joven elfa de cabellos negros como la noche sin luna. Llevaba una túnica de lino gris perla y los pies descalzos. Sus ojos, grises como los de su padre, se detuvieron en él con una curiosidad tan directa que Aurendil sintió que se le olvidaba cómo respirar.</p>
+
+    <div class="sys-window">[Fëa-Link: resonancia 11 % → 47 %]
+[ALERTA: Pulso emocional superior al umbral de control. Sombra de Udûn: estable.]</div>
+
+    <p>—Disculpad —dijo, y su voz salió más ronca de lo planeado—. No sabía que había alguien. Ya me iba.</p>
+    <p>—No te vayas. —La joven plegó el pergamino con cuidado y bajó por la escalera con una agilidad que no pedía permiso a la gravedad—. Tú eres el que despertó bajo la montaña. Aurendil, hijo de Glorfindel. Mi padre habló de ti toda la noche. Pero se negó a contarme nada interesante.</p>
+    <p>—¿Qué consideráis interesante?</p>
+    <p>—Todo. —Llegó al suelo y se detuvo a un paso de distancia, con una media sonrisa que prometía problemas—. Para empezar, por qué hablas con ese acento que parece sacado del siglo cinco de la Primera Edad.</p>
+    <p>—Porque es del siglo cinco de la Primera Edad.</p>
+    <p>—Pues es un acento precioso. Pasado de moda, pero precioso.</p>
+    <p>Aurendil se quedó mirándola un instante.</p>
+    <p>—¿Siempre sois así? —preguntó al fin—. Directa.</p>
+    <p>—Tengo ochenta años —respondió ella, como quien enuncia un argumento irrefutable—. En mi familia, eso significa que he tenido tiempo de sobra para acumular opiniones y ninguna paciencia para disimularlas. —Inclinó la cabeza—. Soy Arwen. Mis hermanos me dicen Undómiel cuando quieren molestarme.</p>
+
+    <div class="sys-window">[DEBUG VISION: Escaneo iniciado]
+&gt;&gt; ENTIDAD: ARWEN UNDÓMIEL · Raza: Peredhel (Elfo / Hombre / Maia)
+&gt;&gt; Nivel: 38 · Aura: Radiante, contenida, indomable
+&gt;&gt; Fëa-Link: COMPATIBILIDAD 99.4 %
+&gt;&gt; [ERROR DE ESCANEO: INTERFERENCIA EMOCIONAL — PROCESO ABORTADO]</div>
+
+    <p>Aurendil cortó el escaneo con tanta brusquedad que le zumbó la cabeza. Ella arqueó una ceja con una sonrisa divertida.</p>
+    <p>—¿Me estabas mirando… por dentro?</p>
+    <p>—Un poco —admitió, resignado—. Perdón. Es un hábito.</p>
+    <p>—Qué hábito tan interesante. —Arwen se acercó medio paso—. ¿Y qué has visto?</p>
+    <p>—Que tienes treinta y ocho de nivel.</p>
+    <p>—No sé qué significa eso.</p>
+    <p>—Yo tampoco estoy seguro —confesó él—. Pero me da la impresión de que es un número alto.</p>
+    <p>Arwen rió. Fue una risa corta, clara, que recorrió la biblioteca como una campanilla. Aurendil no pudo evitar sonreír.</p>
+
+    <div class="sys-window">[Fëa-Link: resonancia 47 % → 62 %]
+[LOGRO DESBLOQUEADO: «Primera Conversación Peligrosa»]</div>
+
+    <p>—Bueno —dijo ella, volviéndose hacia las estanterías—. Si vas a quedarte en mi casa, tendrás que aprender a moverte por aquí. Esta sala es mía, aunque mi padre finja lo contrario. —Sacó con cuidado un volumen encuadernado en cuero verde y lo puso entre las manos de Aurendil—. Es un estudio sobre las runas de Eregion. Lo escribió un artesano que sobrevivió al saqueo, hace unos dos mil años. Nadie lo lee porque está en un dialecto raro. Pero yo creo que dice algo importante. Y tú, que hablas como el siglo cinco…</p>
+    <p>—…puedo leerlo —terminó Aurendil, sorprendido.</p>
+    <p>—Exacto. —Arwen sonrió con una malicia encantadora—. Considéralo tu pago de bienvenida. Léelo, y mañana me cuentas qué dice.</p>
+    <p>Se alejó hacia el fondo de la sala, descalza. A su espalda, una tos discreta.</p>
+    <p>—Una joven muy decidida —dijo la voz de Mithrandir.</p>
+    <p>—No he dicho nada —respondió Aurendil sin volverse.</p>
+    <p>—Tampoco hacía falta. —El peregrino se apoyó en el marco de la puerta—. Tienes la cara de un hombre que acaba de tropezar con una verdad que sabía de memoria, pero cuyo peso desconocía.</p>
+  </article>
+
+  <article id="cap-4" class="chapter">
+    <div class="chapter-header">
+      <h2>CAPÍTULO 4: Compilando la Luz Estelar</h2>
+      <div class="chapter-meta">Año 321 T.E. · Imladris, el taller del ala sur · Nivel 42 → 43</div>
+    </div>
+    <p>—No es un taller —dijo Elrond con severidad—. Es un sótano.</p>
+    <p>—Es el sótano más bonito que he visto en mi vida —replicó Aurendil.</p>
+    <p>—Eso es porque aún no has visto el resto de mi casa.</p>
+    <p>Habían bajado por una escalera de piedra que partía de un rincón del ala sur hasta una cámara abovedada, tallada en la roca viva del valle. Había mesas de trabajo, estantes con herramientas antiguas, un yunque pequeño, un horno sellado con barro y un enorme panel de piedra pulida, liso como un espejo.</p>
+    <p>—Era el taller de un herrero de Eregion que se refugió aquí cuando cayó Ost-in-Edhil —explicó Elrond—. Te pediré algo a cambio: que no me ocultes nada que ponga en peligro mi casa. Sé que guardas secretos, pero si alguna vez uno de ellos puede arrastrar a Imladris a la ruina, quiero oírlo de tus labios antes que descubrirlo por mí mismo.</p>
+    <p>—Os lo prometo.</p>
+    <p>La primera semana la pasó limpiando. Cada noche subía a la biblioteca a devolver los libros y encontraba sobre la mesa un nuevo pergamino señalado con una cinta azul: «Este también. Mañana quiero un informe. —A.» Los informes los entregaba por la mañana; una vez, Arwen le dijo que su interpretación de un poema sindarin era «técnicamente correcta y espiritualmente muerta». Aurendil se pasó tres días pensando en esa frase.</p>
+    <p>La segunda semana empezó el trabajo de verdad frente al panel de piedra.</p>
+
+    <div class="sys-window">[COMPILADOR RÚNICO EN TIEMPO REAL — Modo Taller]
+Lenguajes disponibles: Tengwar (flujo/energía) · Cirth (estructura/materia)
+Nivel de Programación Rúnica: 9 (95 %) · Memoria de trabajo: 38,000 MP</div>
+
+    <p>Quiso hacer una prueba mínima: encender una luz estelar suave. Cerró los ojos y proyectó la estructura geométrica en Cirth de una pequeña esfera de cristal nulo, alimentada por un flujo tenue de Telperion en Tengwar con la instrucción sencilla de emitir luz mientras su voluntad lo sostuviera.</p>
+    <p>Una esfera diminuta tomó forma sobre el panel, brilló, tembló… y estalló con un chasquido seco, esparciendo fragmentos de vidrio por la sala.</p>
+
+    <div class="sys-window alert">[ERROR DE COMPILACIÓN: Bucle infinito sin condición de parada]
+[Daño recibido: -45 HP (fragmentos) · Experiencia: +80 XP]</div>
+
+    <p>—Vaya —dijo Aurendil, sacudiéndose los pedazos del pelo—. Un bucle infinito. Clásico.</p>
+    <p>Recogió los restos y volvió a intentarlo, añadiendo esta vez una condición temporal de parada para limitar la duración del flujo. La esfera se mantuvo estable, brillando como una luciérnaga atrapada en cristal.</p>
+
+    <div class="sys-window">[PRUEBA 002 completada · Experiencia: +400 XP · Programación Rúnica: 95 % → 96 %]
+[LOGRO DESBLOQUEADO: «Hola, Arda»]</div>
+
+    <p>Descubrió que el Tengwar, el lenguaje del flujo, respondía mejor al ritmo que a la sintaxis: si se escribía con cadencia, fluía sin esfuerzo. El Cirth, en cambio, exigía geometría exacta sin concesiones. Y cuando los combinó en una flor de mithril fino de siete pétalos programada para abrirse solo al contacto de un espíritu puro, ocurrió algo inesperado.</p>
+
+    <div class="sys-window">[PRUEBA 011 completada · Efecto emergente detectado: «Resonancia Viva»]
+[Comentario del Sistema: el código ha desarrollado una respuesta que no estaba especificada.]
+[Experiencia: +1,800 XP · NIVEL 42 → 43]</div>
+
+    <p>Pero al intentar forzar la flor de mithril para que soportara una carga mayor de energía, elevando la intensidad del flujo más allá de su margen de seguridad, la estructura tembló. Una veta negra recorrió los pétalos, y Aurendil sintió un calor súbito en su propia mano izquierda.</p>
+
+    <div class="sys-window alert">[ALERTA ROJA: Sombra de Udûn · Activación parcial · Intensidad: 18 %]
+[Control de Voluntad: 310 / 310 · EN ESFUERZO]</div>
+
+    <p>Una lengua de fuego negro brotó entre sus dedos. Un eco mínimo recorrió las paredes del taller: «…hijo…». La flor de mithril se resquebrajó y cayó convertida en polvo gris. La llama oscura se extinguió de golpe.</p>
+
+    <div class="sys-window">[Sombra de Udûn: estado → INACTIVA · Daño recibido: -1,200 HP]
+[NOTIFICACIÓN: Fragmento de registro heredado desbloqueado]
+&gt;&gt; REGISTRO HEREDADO · Fragmento 001
+&gt;&gt; Origen: Sangre materna (Rúmilë) · Integridad: 2 %
+&gt;&gt; Contenido: «…no dejes que el fuego te nombre…»</div>
+
+    <p>Aurendil recogió el polvo de mithril con un pincel y lo guardó en un frasco de cristal. Al subir las escaleras del taller, el Sistema volvió a parpadear.</p>
+
+    <div class="sys-window">[NOTIFICACIÓN]
+Fëa-Link: resonancia estable (62 %).
+Sugerencia: el ancla emocional recomendada se encuentra a 140 yardas, en la Biblioteca Antigua.</div>
+
+    <p>—Eso —dijo al aire— es el consejo de terapia más descarado que me han dado jamás. —Pero subió igualmente.</p>
+  </article>
+
+  <article id="cap-5" class="chapter">
+    <div class="chapter-header">
+      <h2>CAPÍTULO 5: Fantasmas del Pasado</h2>
+      <div class="chapter-meta">Año 321 T.E. · Imladris · Nivel 43</div>
+    </div>
+    <p>La biblioteca estaba a oscuras cuando Aurendil llegó, salvo por una lámpara de cristal junto a la cual Arwen esperaba despierta. Al verlo pálido y oliendo a humo, empujó una silla vacía hacia él sin hacer preguntas incómodas, y el silencio compartido bastó para calmar el temblor de sus manos.</p>
+
+    <div class="sys-window">[Fëa-Link: resonancia 62 % → 66 %]
+[Sombra de Udûn: estable · Pulso emocional: descendiendo]</div>
+
+    <p>Esa noche soñó con fuego: una caverna de magma y una figura inmensa de brasa y sombra que pronunciaba su nombre con una voz hecha de grietas. Despertó con las sábanas chamuscadas y bajó al taller para analizar el frasco de polvo de mithril con el Debug Vision al máximo.</p>
+
+    <div class="sys-window alert">&gt;&gt; DEPURACIÓN PROFUNDA · Objeto: Fragmento 001
+&gt;&gt; Capa 1: Mensaje superficial ("no dejes que el fuego te nombre")
+&gt;&gt; Capa 2: Firma de voluntad materna (Rúmilë) ....... 91 % legible
+&gt;&gt; Capa 3: Proceso residente — ¡ANOMALÍA!
+&gt;&gt; Origen: Corrupción de Morgoth (infección: 86 %) · Emite baliza cada 3,600 s</div>
+
+    <div class="sys-window">[LORE ARCHIVE · Entrada nueva]
+Entidad probable de origen de la señal: URU-RÚMILË (Balrog)
+Nivel estimado: 94 · Ubicación: no triangulable (requiere Nv. 64 para radar abisal)</div>
+
+    <p>Al amanecer se lo contó a Mithrandir, explicando sus visiones como «mi manera de leer los hechizos». El peregrino confirmó que la baliza de sangre despertaba cada vez que Aurendil rozaba el fuego oscuro, y le advirtió que jamás experimentara con él estando solo, señalando con la barbilla hacia Arwen en el patio como la única persona con la cualidad necesaria para sostenerlo.</p>
+    <p>Tres noches después, Arwen bajó al taller por iniciativa propia. Aurendil le confesó su origen en Gondolin, el sacrificio de su padre y la caída de su madre en la sombra. Arwen se ofreció a quedarse a su lado mientras él tocaba el frasco para leer el fragmento.</p>
+    <p>Cuando Aurendil posó la palma izquierda sobre el cristal, la llama negra estalló y lo arrastró de nuevo a la visión de la caverna ardiente. Entonces Arwen comenzó a cantar una antigua canción de cuna sindarin heredada de su abuela Galadriel. Cada nota tejió una red de luz plateada que detuvo la llama oscura; por un instante, en el corazón del fuego apareció el rostro sonriente de Rúmilë.</p>
+
+    <div class="sys-window">[Sombra de Udûn: activación 22 % → 0 %]
+[Baliza de sangre: SUSPENDIDA (72 horas)]
+[Fëa-Link: resonancia 66 % → 78 % · LOGRO: «Ancla de Luz» · +1,500 XP]</div>
+
+    <p>Dentro del frasco, el polvo gris de mithril mostraba ahora en su centro una fina veta dorada que latía al compás de la canción.</p>
+  </article>
+
+  <article id="cap-6" class="chapter">
+    <div class="chapter-header">
+      <h2>CAPÍTULO 6: La Forja de Lómenar</h2>
+      <div class="chapter-meta">Año 321 T.E. · Montañas Nubladas y Taller de Imladris · Nivel 43</div>
+    </div>
+    <p>Acompañado por los hijos gemelos de Elrond, Elladan y Elrohir —de ciento noventa y un años y humor incansable—, Aurendil ascendió a las Hithaeglir tras detectar con el Debug Vision un depósito de acero estelar meteórico en el cráter de Nan Gwaith.</p>
+    <p>—Eso mismo decía nuestra abuela Galadriel antes de lanzarse a un tiroteo de flechas —bromeó Elrohir durante la marcha.</p>
+    <p>—Nuestra abuela no se lanza a nada —replicó Elladan—. Ella dispone que otros se lancen. Es mucho más eficiente.</p>
+    <p>Tras despejar una cueva de trasgos y extraer el bloque de metal estelar —un material de pureza legendaria que rechazaba por naturaleza la Sombra de Udûn—, regresaron a Rivendel, donde Arwen los recibió en el puente del Bruinen.</p>
+    <p>Durante nueve días de trabajo ininterrumpido en el taller, Aurendil fundió el acero estelar con mithril entregado por Elrond y la pizca de polvo dorado del frasco de su madre. Cada martillazo compiló sobre la hoja estructuras en Cirth para el equilibrio del filo y flujos en Tengwar vinculados a la luz de Eärendil, con una condición de seguridad estricta que rechazaría cualquier contacto con el fuego de Udûn.</p>
+
+    <div class="sys-window status-box">[OBJETO CREADO: LÓMENAR]
+Tipo: Espada larga · Rareza: Legendaria · ATK: 420 · Velocidad: +25 %
+Pasiva: «Rechazo de la Sombra» · Activa: «Resplandor Estelar»
+[LOGRO: «Forjador de Estrellas» · +4,200 XP · Programación Rúnica: 98 %]</div>
+
+    <p>Cuando Arwen bajó al taller con un cuenco de sopa, observó la gota de oro engastada en el pomo y notó con delicadeza que la espada «estaba triste», percibiendo la nostalgia heredada de Rúmilë.</p>
+  </article>
+
+  <article id="cap-7" class="chapter">
+    <div class="chapter-header">
+      <h2>CAPÍTULO 7: Lecciones de Esgrima y Estrellas</h2>
+      <div class="chapter-meta">Año 321 T.E. · Imladris, el Patio de las Hayas · Nivel 43 → 44</div>
+    </div>
+    <p>En los entrenamientos matinales en el Patio de las Hayas, Elladan (Nv. 58) y Elrohir (Nv. 57) derrotaron fácilmente a Aurendil en los primeros asaltos: su <em>hröa</em> conservaba la Memoria Muscular de Gondolin enseñada por Glorfindel, pero carecía de resistencia física tras milenios de sueño.</p>
+    <p>Aurendil compensó la desventaja activando la Lectura Táctica del Debug Vision para anticipar los vectores de movimiento de los gemelos, logrando arrancarles un punto y empatar un asalto con espadas reales en el que Lómenar cantó notas cristalinas al chocar contra el acero élfico.</p>
+    <p>En el sexto asalto, un corte superficial de Elrohir rasgó la manga izquierda de Aurendil y dejó al descubierto bajo su piel un circuito luminoso de runas Cirth y Tengwar: el conducto de interfaz entre su <em>fëa</em> y su <em>hröa</em>. Arwen lo vio desde la galería superior, bajó y rozó el circuito con un dedo, escuchando por un segundo el canto grave de la montaña.</p>
+
+    <div class="sys-window">[Fëa-Link: sincronización momentánea · Intensidad: 12 % · Resonancia: 84 %]
+[Misión secundaria disponible: «La Alumna de las Estrellas»]
+[EXPERIENCIA: +1,200 XP · NIVEL 43 → 44 · LOGRO: «Línea Compartida»]</div>
+
+    <p>Aurendil aceptó enseñarle los fundamentos de aquella geometría luminosa a cambio de que ella le ayudara a sobrevivir al entrenamiento con sus hermanos.</p>
+  </article>
+
+  <article id="cap-8" class="chapter">
+    <div class="chapter-header">
+      <h2>CAPÍTULO 8: El Código de la Música</h2>
+      <div class="chapter-meta">Año 321 T.E. · Imladris, el taller del ala sur · Nivel 44 → 45</div>
+    </div>
+    <p>Elrond autorizó las lecciones en el taller bajo una condición firme: «Con la puerta abierta y la lámpara del pasillo encendida», murmurando al subir las escaleras: «Casi cuatro mil años de vida, y todavía me sorprenden mis hijos».</p>
+    <p>Aurendil explicó a Arwen la Música de los Ainur como una partitura viva donde Cirth define la forma de la materia y Tengwar el flujo de la energía. Al tercer día, descubrieron algo decisivo: cuando Arwen tarareaba mientras trazaba las runas Tengwar, la estabilidad del encantamiento alcanzaba el noventa y siete por ciento, muy por encima del sesenta y uno por ciento que lograba Aurendil en silencio. El Tengwar respondía a la cadencia de la voz.</p>
+    <p>Juntos diseñaron la <strong>Lámpara de las Dos Voces</strong>: una estrella de ocho puntas de cuarzo claro sobre base de plata, programada para encenderse únicamente cuando dos voces cantaran juntas en un intervalo consonante, regulando su brillo según la coherencia entre ambas.</p>
+
+    <div class="sys-window status-box">[EFECTO EMERGENTE DETECTADO: «Armonía Viva»]
+[Sincronía entre dos fëar: 94 % · Fëa-Link: resonancia 89 % → 93 %]
+[MISIÓN «La Alumna de las Estrellas»: COMPLETADA · +3,500 XP]
+[LOGRO: «Primera Armonía» · NIVEL 44 → 45]</div>
+
+    <p>Elrond se emocionó al escuchar la música desde la escalera y les pidió que guardaran el secreto de la lámpara. Esa noche, el Sistema notificó que la baliza de sangre se había reactivado al tres por ciento, y Aurendil descubrió en el núcleo del cuarzo una finísima hebra dorada que coincidía con la firma de Rúmilë, puesta allí sin intervención de ninguno de los dos.</p>
+  </article>
+
+  <article id="cap-9" class="chapter">
+    <div class="chapter-header">
+      <h2>CAPÍTULO 9: Incursión en las Ruinas de Eregion</h2>
+      <div class="chapter-meta">Año 321 T.E. · De Imladris a Ost-in-Edhil · Nivel 45 → 46</div>
+    </div>
+    <p>—No —dijo Elrond—. Hollin no es una biblioteca, hija. No estoy dispuesto a averiguar qué duerme allí con mi hija al lado.</p>
+    <p>Arwen aceptó quedarse en Rivendel, pero exigió media hora a solas con Aurendil en el taller para entregarle tres pliegos con el vocabulario de los Mírdain y una cinta azul doblada entre las hojas, pidiéndole que cantara si algo se torcía. Partieron al alba Mithrandir, Elladan, Elrohir y Aurendil. Durante el viaje de ocho días, los gemelos calcularon entre bromas que los sesenta años de Valinor de Aurendil equivalían a casi seis siglos solares, convirtiéndolo en una especie de tío abuelo que seguía perdiendo contra ellos en esgrima.</p>
+    <p>En Ost-in-Edhil, bajo la Canción de la tierra, Aurendil percibió una nota desafinada. Explorando las calles y dinteles grabados con la cortesía de Celebrimbor («Quien entre con la mano abierta, pase»), llegaron a la fragua central. Allí, el Debug Vision reveló dos capas sobre los muros: la obra luminosa de Celebrimbor y, debajo, una escritura invertida de Annatar (Sauron) que actuaba como puerta trasera.</p>
+
+    <div class="sys-window alert">[Baliza de sangre: pulso 9 % → 17 %]
+[Coincidencia de firma: capa inferior ↔ corrupción de Rúmilë: 31 %]</div>
+
+    <p>Sobre el dintel del almacén descubrieron una runa partida en dos —mitad Tengwar ámbar, mitad Cirth negro— trazada con hollín aún húmedo. Al caer la gota al suelo, despertó un Guardián de la Fragua de piedra y bronce (Nv. 61). Incapaces de derribarlo a golpes porque se reparaba solo, Aurendil recordó la lección de Arwen y cantó en Tengwar una excepción cortés en la fórmula del pecho del centinela, inscribiéndose como invitado de Celebrimbor. El gigante inclinó la cabeza y regresó a su yunque.</p>
+
+    <div class="sys-window">[EXPERIENCIA OBTENIDA: +2,600 XP · NIVEL 45 → 46]
+[LOGRO DESBLOQUEADO: «Invitado de Celebrimbor»]
+[Fëa-Link: resonancia 94 % → 96 % · Pulso recibido desde Imladris]</div>
+
+    <p>Esa noche, acampados entre acebos, Aurendil escuchó en el fondo de su pecho la nana de Arwen viajando desde más de doscientas millas de distancia.</p>
+  </article>
+
+  <article id="cap-10" class="chapter">
+    <div class="chapter-header">
+      <h2>CAPÍTULO 10: El Virus de Morgoth</h2>
+      <div class="chapter-meta">Año 321 T.E. · Imladris, las cámaras bajo la Biblioteca · Nivel 46</div>
+    </div>
+    <p>De regreso en Rivendel, Aurendil entregó a Arwen las doce fórmulas copiadas de Ost-in-Edhil y acudió con Elrond y Mithrandir a las cámaras selladas bajo la Biblioteca, protegidas por el poder de Vilya. Allí, dentro de una caja de plomo, Elrond les mostró un aro roto: un anillo menor de ensayo que Celebrimbor partió con sus propias manos al empezar a sospechar de Annatar.</p>
+    <p>Aurendil explicó la naturaleza de aquella corrupción en términos musicales: una falsa Canción de intervalos invertidos que se esconde imitando la belleza, persiste en la voluntad, se propaga y emite una señal hacia quien escucha al otro lado.</p>
+
+    <div class="sys-window alert">[Baliza de sangre: pulso 5 % → 14 %]
+[Coincidencia de firma: molde ↔ corrupción de Rúmilë: 38 %]</div>
+
+    <p>Al intentar levantar una jaula rúnica de aislamiento alrededor del aro, la corrupción reconoció la afinidad de Udûn en Aurendil y lanzó un hilo de fuego negro contra su mano izquierda. Elrond cortó el enlace con el destello azul de Vilya, pero un siete por ciento de residuo oscuro quedó alojado en el circuito del antebrazo de Aurendil.</p>
+
+    <div class="sys-window alert">[Infección bloqueada: 93 % · Residuo detectado: 7 % (alojado en el antebrazo)]</div>
+
+    <p>Aurendil ocultó el residuo a Elrond pensando que su propio sistema lo disolvería antes del amanecer. En el corredor, Mithrandir le exigió que se lo dijera a Elrond de inmediato («Díselo ahora») y le reveló lo que sabía sobre la runa partida: la mitad ámbar era la firma auténtica de Rúmilë, mientras que la mitad negra pertenecía al lenguaje de la sombra, como si ambos hubieran firmado juntos. Aurendil prometió no seguir la runa solo, pero esa medianoche sintió el residuo pulsar bajo su piel.</p>
+  </article>
+
+  <article id="cap-11" class="chapter">
+    <div class="chapter-header">
+      <h2>CAPÍTULO 11: La Sombra del Fuego Interno</h2>
+      <div class="chapter-meta">Año 321 T.E. · Imladris, ala este · Nivel 46</div>
+    </div>
+    <p>El residuo del molde se propagó hasta el veintinueve por ciento y desató la Sombra de Udûn al cincuenta y cuatro por ciento en el cuarto de Aurendil. Las llamas negras calcinaron el mobiliario y proyectaron en los muros la sombra de unos cuernos y unas alas inmensas, mientras la voz rota de Rúmilë resonaba desde el abismo pidiéndole perdón.</p>
+
+    <div class="sys-window alert">[ALERTA ROJA: Sombra de Udûn · Activación 54 %]
+[El residuo del molde se ha propagado al núcleo: 7 % → 29 %]</div>
+
+    <p>Arwen sintió la angustia a través del Fëa-Link y atravesó el muro de calor descalza hasta arrodillarse frente a él. Comenzó a cantar una melodía de tres notas, a la que Aurendil unió su voz grave. Entonces, la Lámpara de las Dos Voces se encendió en el bolsillo de su túnica y la hebra dorada de Rúmilë se sumó al acorde, formando una armonía a tres voces que purgó por completo la corrupción.</p>
+
+    <div class="sys-window">[Sombra de Udûn: activación 54 % → 0 % · Residuo purgado: 0 %]
+[Fëa-Link: resonancia 99 % · LOGRO: «Tres Voces» · +3,800 XP]</div>
+
+    <p>Al apagar el fuego, Aurendil descubrió en la palma derecha de Arwen una cicatriz plateada en forma de relámpago. Elrond acudió al amanecer y reprendió con frialdad a Aurendil por haberle ocultado el residuo a pesar de su promesa, prohibiéndole volver a tocar el fuego oscuro sin su presencia o la de Mithrandir, aunque reconoció con emoción que la voz de la lámpara sonaba exactamente como la de Rúmilë.</p>
+  </article>
+
+  <article id="cap-12" class="chapter">
+    <div class="chapter-header">
+      <h2>CAPÍTULO 12: La Víspera del Siglo</h2>
+      <div class="chapter-meta">Año 341 T.E. · Imladris · Nivel 48</div>
+    </div>
+    <p>Durante veinte años, Aurendil reconstruyó la confianza de Elrond con disciplina y verdad temprana, practicando el control del fuego cada amanecer bajo supervisión y perfeccionando las defensas de las cámaras subterráneas hasta alcanzar el nivel 48.</p>
+    <p>En la víspera del centenario de Arwen y del vigésimo aniversario del despertar de Aurendil, Celebrían regresó de Lindon trayendo un mensaje de Galadriel: «Quien oye la Canción y calla lo que más oye, tarde o temprano deberá cantarlo en voz alta». También llegaron emisarios de Mithlond, Lórinand y Lindon; el señor noldo Aranwë propuso reclamar a Aurendil como heredero de la Casa de la Flor Dorada y sugerir una alianza matrimonial entre su hijo Anorion y Arwen, propuesta que Elrond rechazó con serenidad («Mi hija no está en venta»).</p>
+    <p>Entre los presentes de Lindon apareció un cofrecillo sin remitente con una diadema de plata y ópalo. El Debug Vision detectó bajo la piedra una runa partida dormida diseñada para abrir un canal de rastreo hacia la frente de Arwen. Aurendil detuvo a Arwen antes de que se la pusiera y, junto a Elrond y Mithrandir en el taller, desmontó la trampa y selló la runa extraída en un frasco en las cámaras.</p>
+
+    <div class="sys-window">[EXPERIENCIA OBTENIDA: +2,000 XP]
+[Logro desbloqueado: «Trabajo en Equipo con Mala Intención Ajena»]</div>
+
+    <p>Con permiso de Elrond, Aurendil se lo contó todo a Arwen en la biblioteca. Ella le agradeció que la hubiera avisado y le pidió que, cuando estuviera listo, le contara el secreto mayor que aún callaba, antes de que fuera tarde.</p>
+  </article>
+
+  <article id="cap-13" class="chapter">
+    <div class="chapter-header">
+      <h2>CAPÍTULO 13: El Centenario de la Estrella</h2>
+      <div class="chapter-meta">Año 341 T.E. · Imladris, el Salón del Fuego · Nivel 48 → 49</div>
+    </div>
+    <p>La celebración en el Salón del Fuego reunió música, brindis y regalos, incluida una semilla dorada de mallorn enviada por Galadriel. A medianoche, Elrohir brindó por los cien años de Arwen y por el vigésimo año despierto de su «tío abuelo» Aurendil.</p>
+
+    <div class="sys-window">[LOGRO DESBLOQUEADO: «Vigésimo Año Despierto»]
+[Experiencia: +1,500 XP · NIVEL 48 → 49]</div>
+
+    <p>En la terraza del ala este, bajo las estrellas, Arwen confesó su amor por Aurendil sin exigirle que revelara todavía sus secretos. Aurendil le correspondió, y al besarse, el Fëa-Link alcanzó el cien por cien, permitiéndoles sentir mutuamente los latidos y emociones del otro, bajo la mirada indiscreta de los gemelos y la sonrisa silenciosa de Mithrandir.</p>
+
+    <div class="sys-window status-box">[Fëa-Link: resonancia 99 % → 100 % · ENLACE COMPLETO]
+[LOGRO DESBLOQUEADO: «Dos Fëar, Un Compás»]</div>
+  </article>
+
+  <article id="cap-14" class="chapter">
+    <div class="chapter-header">
+      <h2>CAPÍTULO 14: Juramento en Silencio</h2>
+      <div class="chapter-meta">Año 341 T.E. · Imladris, el taller del ala sur · Nivel 49</div>
+    </div>
+    <p>Al amanecer, Aurendil abrió por fin el paquete azul de Círdan. Contenía una flor de oro de siete pétalos con una gema de Laurelin en el centro: el emblema de la Casa de la Flor Dorada que Glorfindel había dejado en los Puertos del Sirion antes de volver a Gondolin.</p>
+    <p>Con un lingote de mithril ofrecido por Elrond —quien además grabó la runa <em>Estel</em> («Esperanza») en el interior de la banda— y bajo la supervisión de Mithrandir, Aurendil forjó durante siete días la <strong>Diadema de la Flor Dorada</strong>, inscribiendo en su interior una promesa rúnica oculta que solo se revelaría con dos voces en armonía.</p>
+
+    <div class="sys-window status-box">[OBJETO CREADO: DIADEMA DE LA FLOR DORADA · Rareza: Legendaria]
+[Pasiva: «Escudo de Luz» (+80 % resistencia a corrupción)]
+[Oculta: «Juramento en Silencio» · +5,000 XP · Programación Rúnica: 99,6 %]</div>
+
+    <p>En el jardín de las hayas, mientras Arwen plantaba la semilla de mallorn junto a la fuente, Aurendil le entregó la diadema. Al cantar juntos, la inscripción interior brilló sobre su frente: «Mientras la Canción dure, y después de ella, yo estaré», cerrando así la primera fase de su viaje en la Tierra Media.</p>
+  </article>
+
+  <article id="cap-15" class="chapter">
+    <div class="chapter-header">
+      <h2>CAPÍTULO 15: Luz desde el Oeste</h2>
+      <div class="chapter-meta">Año 1000 T.E. · Ered Luin · Nivel 51</div>
+    </div>
+    <p>Seiscientos cincuenta y nueve años después, con Arnor ya dividido en tres reinos y el mallorn de Arwen superando los tejados del ala este, el Sistema anunció un hito mayor y llegó un halcón de Círdan: una nave blanca había arribado desde Valinor y alguien esperaba a Aurendil a solas en la antigua cámara de las Ered Luin.</p>
+    <p>Acompañado hasta la montaña por Mithrandir, Aurendil entró en la cámara y se reencontró con su padre, <strong>Glorfindel</strong> (Nv. 95), renacido de las Estancias de Mandos por voluntad de los Valar. Tras un abrazo cargado de siglos de nostalgia, Glorfindel le reveló la verdad que había conocido en Mandos: cuando Gondolin cayó, Morgoth quiso capturar a Rúmilë y al niño de dos fuegos; Rúmilë se entregó a cambio de que no buscaran a su hijo, dejó que la marcaran y lo selló bajo la roca antes de que la corrupción consumiera el último rincón de su mente. Según Námo, su <em>fëa</em> jamás cruzó las puertas de Mandos: lleva milenios atada a su propio fuego, resistiendo con un núcleo solar intacto que solo alguien con sus dos fuegos podría rescatar.</p>
+
+    <div class="sys-window">[Registro heredado, Fragmento 002: DESBLOQUEADO · Integridad: 6 %]
+[Origen: sangre materna · Contenido: «…resisto…»]
+[HITO COMPLETADO: «Luz desde el Oeste» · +6,000 XP · LOGRO: «El Hijo de la Flor Dorada»]</div>
+
+    <p>Glorfindel confirmó también que la mitad ámbar de la runa partida al pie del pino era la señal con la que Rúmilë le decía «estoy aquí», y le hizo prometer que jamás iría tras ella en solitario.</p>
+  </article>
+
+  <article id="cap-16" class="chapter">
+    <div class="chapter-header">
+      <h2>CAPÍTULO 16: Acero de Gondolin</h2>
+      <div class="chapter-meta">Año 1000 T.E. · Imladris, el Patio de las Hayas · Nivel 51 → 52</div>
+    </div>
+    <p>De vuelta en Rivendel, donde la presencia de Glorfindel se mantuvo en secreto temporalmente por orden de Elrond, padre e hijo se enfrentaron en un entrenamiento con espadas de madera en el Patio de las Hayas. Glorfindel (Nv. 95) superó con facilidad la Lectura Táctica de Aurendil engañando a su cuerpo, y le enseñó a cerrar los ojos para escuchar el ritmo profundo del combate antes de que el cuerpo anuncie el golpe, además de instruirlo en el Paso del Relámpago de Gondolin.</p>
+    <p>Al examinar a Lómenar y reconocer la gota dorada de Rúmilë en el pomo, Glorfindel entregó a su hijo un paquete traído desde la orilla de Mandos: la <strong>Vaina de Ecthelion</strong>, forjada en Gondolin un año antes de la caída, que resonó en armonía perfecta al recibir la hoja.</p>
+
+    <div class="sys-window status-box">[OBJETO ADQUIRIDO: VAINA DE ECTHELION · Rareza: Legendaria]
+[Pasiva: «Resonancia de Hermanas» (+15 % ATK, +30 % resistencia a corrupción)]
+[EXPERIENCIA: +4,500 XP · NIVEL 51 → 52 · LOGRO: «Acero de Gondolin»]</div>
+  </article>
+
+  <article id="cap-17" class="chapter">
+    <div class="chapter-header">
+      <h2>CAPÍTULO 17: Los Cinco Enviados</h2>
+      <div class="chapter-meta">Año 1000 T.E. · Mithlond · Nivel 52</div>
+    </div>
+    <p>En otoño del año 1000 T.E., Círdan convocó a Elrond, Glorfindel, Mithrandir y Aurendil a los Puertos Grises ante la llegada de una nave gris sin velas. Oculto tras una celosía bajo el Velo Metafísico al máximo, Aurendil observó la llegada de los Istari: <strong>Curunír (Saruman)</strong> (Nv. 82, en quien el Debug Vision detectó una grieta latente de ambición y un leve reconocimiento hacia el escondite de Aurendil), <strong>Aiwendil (Radagast)</strong> (Nv. 74) y los dos Magos Azules, <strong>Alatar y Pallando</strong>.</p>
+    <p>Ante la mirada recelosa de Curunír al saber que Olórin había llegado seiscientos setenta y nueve años antes, Círdan entregó a Mithrandir el Anillo del Fuego, <strong>Narya</strong>, elevando su poder efectivo. Esa noche, en el muelle de Mithlond, Aurendil compartió con Glorfindel su inquietud por la grieta percibida en Curunír y por los silencios de Mithrandir.</p>
+
+    <div class="sys-window">[Lore Archive: «Narya ha cambiado de portador: Círdan → Olórin (Mithrandir)»]
+[Divergencia temporal acumulada: 4 % → 5 %]</div>
+  </article>
+
+  <article id="cap-18" class="chapter">
+    <div class="chapter-header">
+      <h2>CAPÍTULO 18: El Alzamiento del Rey Brujo</h2>
+      <div class="chapter-meta">Año 1300 T.E. · Rivendel, Fornost y Amon Sûl · Nivel 54 → 55</div>
+    </div>
+    <p>Tres siglos después —con Glorfindel ya presentado públicamente como capitán de la guardia de Rivendel—, un frío antinatural descendió desde Carn Dûm: el <strong>Rey Brujo</strong> había llegado a Angmar. Para proteger los reinos divididos de Arnor, Aurendil diseñó una red de siete piedras vigía rúnicas capaces de detectar la disonancia de Angmar y cantar una melodía de alarma de siete notas grabada con la voz de Arwen.</p>
+    <p>En Fornost Erain, ante el rey Malvegil y el príncipe Argeleb, la primera piedra delató a un criado espía que portaba un amuleto de escucha de Angmar con la misma arquitectura corrupta que el Molde Roto. Tras instalar la red por todo Arnor y contemplar sin tocarlo el <em>Palantír</em> de Amon Sûl custodiado por Haldanor, Aurendil y los gemelos repelieron una incursión nocturna de treinta trasgos y huargos en la cima de los Vientos gracias al aviso temprano de la cadena sonora.</p>
+
+    <div class="sys-window">[EXPERIENCIA OBTENIDA: +3,800 XP · NIVEL 54 → 55]
+[LOGRO DESBLOQUEADO: «La Cadena de la Voz»]</div>
+
+    <p>Al pie de la escalera de Amon Sûl, Elladan halló una tercera aparición fresca de la runa partida en ceniza, y Aurendil renovó su promesa de no seguirla jamás en solitario.</p>
+  </article>
+
+  <article id="cap-19" class="chapter">
+    <div class="chapter-header">
+      <h2>CAPÍTULO 19: Caza de Espectros</h2>
+      <div class="chapter-meta">Año 1409 T.E. · Tyrn Gorthad, frontera de Cardolan y Rhudaur · Nivel 55 → 58</div>
+    </div>
+    <p>Tras la caída de Amon Sûl ante las huestes de Angmar, tardaron meses en llegar a Rivendel los rumores sobre los espectros enviados por el Rey Brujo a habitar las tumbas de Tyrn Gorthad. Aurendil perfeccionó el <strong>Látigo de Llama Blanca</strong> —un fuego selectivo de Anor programado para arder únicamente lo corrupto— y acudió a las Colinas de los Túmulos junto a Elrohir, mientras Glorfindel aguardaba en el exterior para no ahuyentar a las criaturas.</p>
+    <p>Dentro de los túmulos, apoyado a distancia por el canto de Arwen a través del Fëa-Link para contener la resonancia con su propia Sombra, Aurendil destruyó siete espectros purgando la runa partida que ardía en sus pechos. En la última cámara halló un broche de plata de Cardolan y una cuarta runa partida trazada con fuego tenue reciente, parcialmente purgada por una mano desconocida, que señalaba hacia el sureste: hacia el Bosque Negro y Dol Guldur.</p>
+
+    <div class="sys-window">[EXPERIENCIA TOTAL DE LA INCURSIÓN: +7,200 XP · NIVEL 55 → 58]
+[LOGRO DESBLOQUEADO: «Cazador de Espectros» · Baliza de sangre: 11 % → 4 %]</div>
+  </article>
+
+  <article id="cap-20" class="chapter">
+    <div class="chapter-header">
+      <h2>CAPÍTULO 20: La Dama de Lothlórien</h2>
+      <div class="chapter-meta">Año 1410 T.E. · Lothlórien, Caras Galadhon · Nivel 58 → 59</div>
+    </div>
+    <p>Guiados por Haldir hasta Caras Galadhon, Aurendil, Mithrandir y Glorfindel fueron recibidos por Celeborn y Galadriel. Al posar dos dedos sobre la frente de Aurendil, la Dama de Lórien percibió el eco de otro mundo en su mente sin violar su secreto, aconsejándole que contara la verdad a Arwen cuando ella pudiera sostenerlo.</p>
+    <p>Ante el Espejo de Galadriel, Aurendil contempló tres visiones: a su madre en una caverna de fuego con una brasa dorada intacta en el pecho («…resisto…»); una torre negra coronada por un ojo de fuego; y a Arwen mayor y triste junto a un mallorn, con una cuna vacía detrás de ella. Galadriel le explicó que la mitad ámbar de la runa era una parte libre de Rúmilë bajo el fuego, mientras que la mitad negra era un cebo del enemigo, y le entregó una <strong>Gota del Espejo</strong> antes de despedirlo.</p>
+
+    <div class="sys-window">[EXPERIENCIA OBTENIDA: +3,000 XP · NIVEL 58 → 59 · LOGRO: «Visto por la Dama»]
+[Objeto adquirido: Gota del Espejo · Relación con Galadriel: 60 %]</div>
+  </article>
+
+  <article id="cap-21" class="chapter">
+    <div class="chapter-header">
+      <h2>CAPÍTULO 21: Ingeniería de Defensa</h2>
+      <div class="chapter-meta">Año 1411 T.E. · Lothlórien · Nivel 59 → 60</div>
+    </div>
+    <p>Convocado por Galadriel y tras responder con honestidad a Celeborn, Aurendil colaboró durante casi dos años con Rúmil y los artesanos silvanos para reforzar la barrera de Nenya de modo que el bosque no dependiera de un único punto de fallo. Crearon tres sistemas: el <em>Oído del Árbol</em> (memoria colectiva de los mallorns), el <em>Sendero que Olvida</em> (desorientación selectiva contra la disonancia morgothiana) y el <em>Umbral del Río</em> en las orillas del Anduin.</p>
+    <p>Arwen viajó a Lórien a mitad del segundo año y registró su voz de siete notas en el primer mallorn como la firma de «La Amiga». Poco después, una incursión nocturna de cuarenta orcos de Dol Guldur fue rechazada por el río y atrapada por los senderos sin perder una sola vida élfica. En el escudo de un prisionero hallaron grabada únicamente la mitad negra de la runa partida, revelando que el Nigromante de Dol Guldur conocía el nombre de Rúmilë y temía su poder.</p>
+
+    <div class="sys-window">[EXPERIENCIA OBTENIDA: +3,800 XP · NIVEL 59 → 60 · LOGRO: «Ingeniero de Lórien»]
+[Relación con Celeborn: 55 % · Relación con Galadriel: 72 %]</div>
+  </article>
+
+  <article id="cap-22" class="chapter">
+    <div class="chapter-header">
+      <h2>CAPÍTULO 22: El Radar del Abismo</h2>
+      <div class="chapter-meta">Año 1642 T.E. · Imladris · Nivel 63 → 64</div>
+    </div>
+    <p>Durante la Gran Plaga, Aurendil diseñó faroles purificadores de luz de Telperion en la enfermería de Rivendel que salvaron a cientos de refugiados humanos. Al alcanzar el nivel 64 —tras reprochar al Sistema que contara sus esfuerzos entre muertos como experiencia—, desbloqueó el <strong>Radar del Abismo</strong>.</p>
+    <p>Utilizando las tres piedras vigía que aún seguían activas en Arnor para triangular la baliza de sangre, Aurendil localizó el origen exacto de la señal: a mil ochocientas yardas bajo las <strong>Ered Mithrin (Montañas Grises)</strong>, donde Uru-Rúmilë (Nv. 94) permanecía activa. Aunque Glorfindel quiso partir de inmediato, Aurendil lo convenció de esperar hasta crear un método de purificación que salvara a su madre sin destruirla, prometiendo además a Arwen que le revelaría todo su secreto antes de emprender el descenso.</p>
+
+    <div class="sys-window status-box">[NIVEL 63 → 64 · HABILIDAD DESBLOQUEADA: «Radar del Abismo»]
+[Origen de la señal: bajo las Ered Mithrin · Profundidad: ~1,800 yardas · Entidad: Nv. ~94]</div>
+  </article>
+
+  <article id="cap-23" class="chapter">
+    <div class="chapter-header">
+      <h2>CAPÍTULO 23: Arquitectura de Purificación</h2>
+      <div class="chapter-meta">Años 1650–1700 T.E. · Imladris, el taller del ala sur · Nivel 64 → 66</div>
+    </div>
+    <p>Durante décadas, Aurendil desarrolló el <strong>Algoritmo de Purificación</strong> en cuatro fases: reconocer la firma de Morgoth, aislarla en una jaula de cuarentena, depurarla sin generar falsos positivos que destruyeran recuerdos o cicatrices naturales, y restaurar el espíritu del huésped.</p>
+    <p>Al probarlo sobre el Molde Roto y la runa partida del frasco, comprobó que el conjuro solo lograba limpiar entre un treinta y un cuarenta por ciento cuando la corrupción estaba profundamente entrelazada. El Sistema indicó que faltaba el componente final: una <em>Resonancia de origen</em>, una melodía pura de Aman que Rúmilë reconociera como propia. Glorfindel recordó que ella cantaba una melodía al amanecer en Valinor pero había olvidado las notas; tras cuarenta años de intentos fallidos, Aurendil pausó el proyecto sin advertir que la nana que Arwen tarareaba en silencio junto al panel coincidía ya en un sesenta y dos por ciento con aquella firma perdida.</p>
+
+    <div class="sys-window">[ALGORITMO DE PURIFICACIÓN: 71 % completo · Componente faltante: «Resonancia de origen»]
+[EXPERIENCIA TOTAL DEL PERIODO: +8,500 XP · NIVEL 64 → 66]</div>
+  </article>
+
+  <article id="cap-24" class="chapter">
+    <div class="chapter-header">
+      <h2>CAPÍTULO 24: La Caída de Fornost</h2>
+      <div class="chapter-meta">Año 1974 T.E. · Fornost Erain y las Colinas del Norte · Nivel 68</div>
+    </div>
+    <p>Cuando el Rey Brujo cercó Fornost Erain, Aurendil y los gemelos acudieron en ayuda del último rey de Arthedain, Arvedui. Mediante las dos piedras vigía que aún funcionaban, Aurendil tejió un <em>Contrapunto</em> musical amplificando la melodía de siete notas de Arwen desde Rivendel, reduciendo el Pavor de Angmar entre los defensores y devolviéndoles el ánimo.</p>
+    <p>Al tercer día, el Rey Brujo quebró la muralla norte con una «Voz de la Nada» que estuvo a punto de hacer estallar la baliza de sangre en el pecho de Aurendil, mientras la voz de Rúmilë le advertía desde la distancia que retrocediera. Aurendil y los gemelos escoltaron la huida de Arvedui con cuarenta fieles y los dos <em>Palantíri</em>, sabiendo por el Lore Archive que la pérdida del rey en los hielos del norte era un suceso canónico inmutable.</p>
+
+    <div class="sys-window">[EXPERIENCIA OBTENIDA: +4,200 XP · LOGRO: «Contrapunto»]
+[Lore Archive: «Año 1974 T.E. — Caída de Fornost. Evento CANÓNICO»]</div>
+  </article>
+
+  <article id="cap-25" class="chapter">
+    <div class="chapter-header">
+      <h2>CAPÍTULO 25: Lo Que Dijo Glorfindel</h2>
+      <div class="chapter-meta">Año 1975 T.E. · La llanura de Fornost · Nivel 68</div>
+    </div>
+    <p>Tras confirmarse el naufragio de Arvedui en Forochel, el ejército de Gondor comandado por el príncipe Eärnur desembarcó en Mithlond y se unió a Círdan, Glorfindel, los dúnedain de Aranarth y Aurendil en la llanura de Fornost. La sola presencia luminosa de Glorfindel quebró las filas de Angmar.</p>
+    <p>Cuando el Rey Brujo se retiró entre la niebla y Eärnur quiso lanzarse en su persecución, Glorfindel detuvo su caballo y pronunció la profecía canónica: que el Señor de los Nazgûl no volvería a aquella tierra mientras vivieran los presentes, y que su fin estaba lejos y no caería por mano de hombre. Esa noche, Glorfindel confesó a su hijo que había sentido un temblor en la baliza al cruzarse con el Rey Brujo, intuyendo que Rúmilë y el líder de los Nazgûl se habían cruzado en el pasado.</p>
+
+    <div class="sys-window">[Lore Archive: «Profecía de Glorfindel registrada · Año 1975 T.E. · Evento CANÓNICO»]</div>
+  </article>
+
+  <article id="cap-26" class="chapter">
+    <div class="chapter-header">
+      <h2>CAPÍTULO 26: La Piedra de Carn Dûm</h2>
+      <div class="chapter-meta">Año 1976 T.E. · Imladris, el taller del ala sur · Nivel 68 → 69</div>
+    </div>
+    <p>Aranarth envió a Rivendel un bloque de basalto extraído de Carn Dûm que el Rey Brujo usaba para amplificar su pavor, y en el que el Debug Vision detectó un dieciocho por ciento de coincidencia con la firma robada de Rúmilë. Aurendil intentó probar el Antivirus sobre la piedra en las cámaras bajo la Biblioteca junto a Elrond y Mithrandir, pero al tocar el núcleo la corrupción rompió la jaula y desató la Sombra de Udûn al cuarenta y siete por ciento, agrietando la roca hasta la Biblioteca superior.</p>
+    <p>Arwen bajó corriendo y cantó la nana sindarin de su abuela Galadriel. La Lámpara de las Dos Voces completó el acorde y proyectó la presencia luminosa de Rúmilë cantando junto a ella («yo también la cantaba»), apagando el fuego negro y revelando que la nana transmitida desde Gondolin por Idril y Elwing era la <em>Resonancia de origen</em> buscada durante décadas. Tras el susto, Arwen exigió a Aurendil que le contara toda la verdad pendiente a la mañana siguiente.</p>
+
+    <div class="sys-window status-box">[ALGORITMO DE PURIFICACIÓN: 71 % → 94 % (¡«Resonancia de origen» ENCONTRADA!)]
+[EXPERIENCIA OBTENIDA: +6,500 XP · NIVEL 68 → 69 · LOGRO: «Resonancia de Origen»]</div>
+  </article>
+
+  <article id="cap-27" class="chapter">
+    <div class="chapter-header">
+      <h2>CAPÍTULO 27: El Consejo de Arwen</h2>
+      <div class="chapter-meta">Año 1976 T.E. · Imladris, el balcón del mallorn · Nivel 69 → 70</div>
+    </div>
+    <p>Amaneció sin nubes, y Aurendil deseó que lloviera.</p>
+    <p>Bajó al jardín cuando el cielo empezaba a clarear. El mallorn de Arwen, ya más alto que las torres, tenía las hojas doradas encendidas por la primera luz, y al pie, junto a la fuente, ella esperaba con dos tazas de té de tilo y miel, llevando la diadema de la Flor Dorada y el cabello suelto.</p>
+    <p>—Voy a empezar por el final —dijo Aurendil—. Lo que me hace oír y ver cosas que los demás no, no es la Canción. O no solo. Hay otra cosa: una voz y unas letras que solo yo veo. Me dicen cuánto vale un conjuro, me avisan cuando el fuego se desborda, me cuentan lo que sé de las personas antes de que me lo cuenten ellas. Lo llamo el Sistema.</p>
+    <p>Con las palabras temblándole al principio pero ganando firmeza, le contó la habitación pequeña con tres pantallas azules, el teclado gastado y la vida de un ingeniero de veinticinco años en el año 2025 que leía a Tolkien con el lomo de los libros roto antes de despertar en Tirion bajo la luz de los Árboles. Le confesó que en aquel mundo Arda era un libro, razón por la cual había sabido de antemano quién era Círdan, cuándo llegaría Mithrandir o por qué Eärnur no debía perseguir al Rey Brujo.</p>
+    <p>Arwen dejó la taza sobre la hierba, procesó cada palabra y se sentó a su lado hasta que sus hombros se rozaron.</p>
+    <p>—No me enamoré de un nombre en un libro —añadió él—. Me enamoré de ti cuando me dijiste que mi traducción era técnicamente correcta y espiritualmente muerta. Eso no estaba en ninguna página.</p>
+    <p>—Estoy furiosa. Un poco. Mil seiscientos años es mucho tiempo para callar —respondió ella, pellizcándole la manga—. Pero llevo cuarenta años mirando tu panel cerrado, Aurendil. Sabía que había una puerta y sabía de quién era la llave.</p>
+    <p>Durante dos horas le hizo preguntas sobre el Sistema —llegando a pedirle que le preguntara si le caía bien, a lo que el Eä-Core OS respondió con sequedad que le caía mejor que el propio Aurendil— y le pidió que jamás le revelara lo que el libro decía sobre su propio futuro: «Un libro dice lo que le pasó a alguien, no lo que esa persona va a elegir. Llevo mil setecientos treinta y cinco años eligiendo sin que me lo cuenten antes».</p>
+
+    <div class="sys-window">[Soledad del sujeto: 4 % → 0 %]
+[Comentario del Sistema: «Primera vez que veo ese número. Lo anoto».]</div>
+
+    <p>Después analizaron el descenso a las Ered Mithrin. Arwen aportó la pieza final que le faltaba al Algoritmo de Purificación: inspirándose en las puertas de Celebrimbor («Quien entre con la mano abierta, pase»), propuso que la fase de restauración no actuara como una cirugía invasiva, sino como una invitación rúnica que cantara la nana en dos voces —la suya propia y la de la hebra dorada de la lámpara, sostenidas por Aurendil— esperando a que Rúmilë decidiera abrir desde dentro.</p>
+
+    <div class="sys-window status-box">[ALGORITMO DE PURIFICACIÓN: restauración reformulada como «invitación» · Estado: 97 %]
+[EXPERIENCIA OBTENIDA: +5,000 XP · NIVEL 69 → 70 · LOGRO: «Cantado en Voz Alta»]</div>
+
+    <p>Por la tarde informaron a Elrond de la existencia del Sistema, quien aceptó la verdad tras confirmar que no ponía en peligro su casa, y celebraron juntos la cena en el Salón del Fuego junto a Glorfindel y Mithrandir, mientras a lo lejos, bajo las Montañas Grises, la brasa dorada de Rúmilë seguía esperando.</p>
+  </article>
+
+</main>
+</body>
+</html>
